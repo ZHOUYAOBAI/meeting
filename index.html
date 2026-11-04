@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三部红色歌剧 · 项目比选 — 云南钟声音乐</title>
+<meta name="description" content="三部云南本土红色歌剧项目比选：《百年星语·破晓1928》《山河摆渡人》《闻一多先生》。">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{
+  --bg:#0B2B25;--bg-2:#0F352D;--surface:#143B32;--surface-2:#1A463B;
+  --ink:#EDE6D3;--muted:#A9B4A2;--faint:#7C8B7E;
+  --accent:#E2723A;--gold:#C9A35C;--camellia:#C84B5C;--river:#6E9489;
+  --line:rgba(237,230,211,0.13);
+  --serif:"Noto Serif SC","Songti SC","STSong",SimSun,serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+main{position:relative;z-index:1}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;
+  background:linear-gradient(180deg,rgba(11,43,37,.92),rgba(11,43,37,.4) 80%,transparent);backdrop-filter:blur(6px)}
+.brand{font-size:14px;letter-spacing:.34em;font-weight:700;display:flex;align-items:center;gap:12px}
+.brand img{width:22px;height:22px;opacity:.85}
+.brand em{font-style:normal;color:var(--accent)}
+.nav{display:flex;gap:26px}
+.nav a{font-family:var(--serif);font-size:14.5px;font-weight:600;letter-spacing:.08em;color:var(--muted);position:relative;padding:6px 0;transition:color .3s}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .35s var(--ease)}
+.nav a:hover,.nav a.on{color:var(--ink)}.nav a:hover::after,.nav a.on::after{width:100%}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 8vw 90px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0B2B25 0%,#143B32 45%,#0F352D 100%)}
+.hero-bg::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 78% 22%,rgba(226,114,58,.14),transparent 50%),
+             radial-gradient(ellipse at 18% 82%,rgba(200,75,92,.10),transparent 45%)}
+.hero-grid{position:absolute;inset:0;opacity:.35;
+  background-image:linear-gradient(rgba(237,230,211,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(237,230,211,.04) 1px,transparent 1px);
+  background-size:80px 80px}
+.hero-emblems{position:absolute;right:6vw;top:50%;transform:translateY(-50%);display:flex;gap:40px;opacity:.12;pointer-events:none}
+.hero-emblems img{width:72px;height:72px}
+.hero-inner{position:relative;z-index:2;max-width:1100px}
+.hero-kicker{font-family:var(--serif);font-size:13px;letter-spacing:.5em;color:var(--gold);margin-bottom:28px;opacity:0;animation:inkIn 1.2s var(--ease) .2s forwards}
+.hero-title{font-size:clamp(46px,8.5vw,118px);font-weight:900;line-height:1.08;letter-spacing:.04em;opacity:0;filter:blur(8px);animation:inkIn 1.6s var(--ease) .45s forwards}
+.hero-title .yr{color:var(--accent)}
+.hero-sub{font-size:clamp(16px,1.9vw,22px);color:var(--muted);margin-top:26px;max-width:60ch;line-height:1.9;opacity:0;animation:inkIn 1.3s var(--ease) .8s forwards}
+.hero-meta{display:flex;flex-wrap:wrap;gap:14px 40px;margin-top:50px;font-family:var(--serif);font-size:13px;letter-spacing:.16em;color:var(--faint);opacity:0;animation:inkIn 1.3s var(--ease) 1.05s forwards}
+.hero-meta b{color:var(--ink);font-weight:600}
+.hero-meta .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
+@keyframes inkIn{from{opacity:0;transform:translateY(22px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+
+.section{padding:120px 8vw}
+.sec-kicker{font-family:var(--serif);font-size:12px;letter-spacing:.46em;color:var(--accent);margin-bottom:18px}
+.sec-title{font-size:clamp(34px,5vw,60px);font-weight:900;line-height:1.2;letter-spacing:.03em}
+.sec-rule{width:56px;height:2px;background:var(--accent);margin-top:26px}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* 三剧卡：emblem 上 + 文字下 */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.tcard{position:relative;border:1px solid var(--line);background:var(--surface);overflow:hidden;transition:transform .5s var(--ease),border-color .5s;cursor:pointer;display:flex;flex-direction:column}
+.tcard:hover{transform:translateY(-8px);border-top-color:var(--accent)}
+.tcard-emblem{height:130px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(237,230,211,.04),transparent);border-bottom:1px solid var(--line)}
+.tcard-emblem img{width:64px;height:64px;opacity:.8;transition:transform .6s var(--ease)}
+.tcard:hover .tcard-emblem img{transform:scale(1.1) rotate(-4deg)}
+.tcard-body{padding:26px 24px 28px;flex:1;display:flex;flex-direction:column}
+.tcard-yr{font-family:var(--serif);font-size:12px;letter-spacing:.3em;color:var(--accent);margin-bottom:10px}
+.tcard-name{font-size:22px;font-weight:900;letter-spacing:.04em;margin-bottom:8px;line-height:1.3}
+.tcard-place{font-family:var(--serif);font-size:12.5px;letter-spacing:.14em;color:var(--gold);margin-bottom:14px}
+.tcard-tag{font-size:14px;color:var(--muted);line-height:1.8;flex:1}
+.tcard-quote{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink);font-style:italic;line-height:1.7}
+
+.matrix-wrap{margin-top:60px;overflow-x:auto;border:1px solid var(--line)}
+.matrix{width:100%;border-collapse:collapse;min-width:760px;font-family:var(--sans);font-size:13.5px}
+.matrix th,.matrix td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.matrix thead th{background:var(--surface-2);font-weight:700;letter-spacing:.08em;font-size:13px;color:var(--ink)}
+.matrix thead th:nth-child(2){color:#C9A35C}
+.matrix thead th:nth-child(3){color:#6E9489}
+.matrix thead th:nth-child(4){color:#C84B5C}
+.matrix tbody th{color:var(--faint);font-weight:400;letter-spacing:.08em;width:120px}
+.matrix tbody td{color:var(--ink);line-height:1.65}
+.matrix tbody tr:hover td{background:rgba(237,230,211,.03)}
+
+/* 分剧大区块 */
+.show-section{padding:110px 8vw;border-top:1px solid var(--line);position:relative}
+.show-emblem{position:absolute;right:6vw;top:80px;width:140px;height:140px;opacity:.08;pointer-events:none}
+.show-head{display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+.show-num{font-family:var(--serif);font-size:13px;letter-spacing:.4em;color:var(--accent);padding-top:14px}
+.show-name-wrap{flex:1;min-width:280px}
+.show-name{font-size:clamp(34px,5vw,62px);font-weight:900;letter-spacing:.05em;line-height:1.1}
+.show-place{font-family:var(--serif);font-size:14px;letter-spacing:.2em;color:var(--gold);margin-top:8px}
+
+/* 音频试听卡片 */
+.audio-strip{margin:16px 0;border:1px solid var(--line);background:rgba(226,114,58,.04)}
+.audio-head{padding:16px 20px 12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.audio-head .label{font-family:var(--serif);font-size:11px;letter-spacing:.24em;color:var(--gold)}
+.audio-head .song{font-size:17px;font-weight:700;flex:1;min-width:140px}
+.audio-head .credit{font-family:var(--serif);font-size:11.5px;color:var(--faint);letter-spacing:.05em}
+.audio-head audio{height:34px;flex:2;min-width:220px}
+.audio-lyrics{padding:18px 22px;background:rgba(0,0,0,.12);font-size:14.5px;line-height:2;color:var(--muted);font-style:italic;white-space:pre-wrap}
+.audio-lyrics .placeholder{color:var(--faint);font-style:normal;font-family:var(--serif);font-size:12px;letter-spacing:.1em}
+
+.show-photo{margin:30px 0;height:340px;overflow:hidden;border:1px solid var(--line)}
+.show-photo img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:grayscale(.3) contrast(1.05)}
+.cap{font-family:var(--serif);font-size:11px;letter-spacing:.12em;color:var(--faint);margin-top:8px}
+
+.block{margin:44px 0}
+.block-h{font-family:var(--serif);font-size:12px;letter-spacing:.36em;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.block-h::before{content:"";width:24px;height:1px;background:var(--gold)}
+.block p{font-size:16.5px;line-height:1.95;color:var(--ink);margin-bottom:14px;text-align:justify;max-width:78ch}
+.block p.note{color:var(--muted);font-size:15px}
+
+.tl{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--line);margin-left:8px}
+.tl-item{padding:14px 0 14px 28px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-5px;top:22px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.tl-when{font-family:var(--serif);font-size:12.5px;letter-spacing:.14em;color:var(--accent);margin-bottom:4px}
+.tl-what{font-size:15.5px;line-height:1.75;color:var(--ink)}
+
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.p-card{border:1px solid var(--line);background:var(--surface);padding:18px 20px;border-left:2px solid var(--accent)}
+.p-name{font-size:17px;font-weight:700;letter-spacing:.06em;margin-bottom:4px}
+.p-role{font-family:var(--serif);font-size:11.5px;letter-spacing:.14em;color:var(--gold);margin-bottom:10px}
+.p-desc{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+.songs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:10px}
+.song-item{border:1px solid var(--line);padding:12px 14px;background:rgba(237,230,211,.02);font-family:var(--serif)}
+.song-no{font-size:10.5px;letter-spacing:.2em;color:var(--accent);margin-bottom:4px}
+.song-name{font-size:14.5px;color:var(--ink);margin-bottom:3px}
+.song-perf{font-size:11.5px;color:var(--faint)}
+
+.verse{border-left:3px solid var(--accent);padding:18px 24px;background:rgba(226,114,58,.06);margin:20px 0}
+.verse .v-title{font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+.verse p{font-size:17px;line-height:2;color:var(--ink);font-style:italic;margin:0}
+
+.concept{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.c-card{border-top:2px solid var(--gold);padding-top:18px}
+.c-h{font-family:var(--serif);font-size:12px;letter-spacing:.24em;color:var(--gold);margin-bottom:10px}
+.c-p{font-size:14.5px;color:var(--muted);line-height:1.8}
+
+.creative-team{padding:80px 8vw;background:var(--bg-2);border-top:1px solid var(--line)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:40px}
+.tm-card{border-top:1px solid var(--line);padding-top:20px}
+.tm-role{font-family:var(--serif);font-size:11px;letter-spacing:.3em;color:var(--accent);margin-bottom:10px}
+.tm-name{font-size:20px;font-weight:700;letter-spacing:.08em;margin-bottom:6px}
+.tm-desc{font-size:14px;color:var(--muted);line-height:1.8}
+
+.footer{padding:70px 8vw 40px;border-top:1px solid var(--line)}
+.foot-note{font-family:var(--sans);font-size:11.5px;letter-spacing:.06em;color:var(--faint);line-height:1.9;margin-top:18px}
+
+@media(max-width:960px){
+  .trio{grid-template-columns:1fr}
+  .nav{display:none}
+  .concept{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .hero-emblems{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001s!important;animation-duration:.001s!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="brand">
+    <img src="wenyiduo-site/assets/svg/emblem-spot.svg" alt="">
+    三部红色歌剧<em>·</em>项目比选
+  </div>
+  <div class="nav">
+    <a href="#preface">前言</a>
+    <a href="#team">主创</a>
+    <a href="#trio">概览</a>
+    <a href="#matrix">对照</a>
+    <a href="#show-1">《破晓1928》</a>
+    <a href="#show-2">《山河摆渡人》</a>
+    <a href="#show-3">《闻一多先生》</a>
+    <a href="#apply">申报对照</a>
+    <a href="#paths">路径</a>
+    <a href="#support">院校支持</a>
+    <a href="#next">下一步</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-emblems">
+    <img src="wenyiduo-site/assets/svg/emblem-spot.svg" alt="">
+    <img src="wenyiduo-site/assets/svg/emblem-wave.svg" alt="">
+    <img src="wenyiduo-site/assets/svg/emblem-harp.svg" alt="">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-kicker">2026.11.5 · 内部讨论稿 · 未定稿</div>
+    <h1 class="hero-title">一部歌剧，<br>一个<span class="yr">年代</span>，一种<span class="yr">选择</span>。</h1>
+    <p class="hero-sub">三个云南革命历史断面：1928 查尼皮的马灯、1935 皎平渡的木船、1946 昆明的红烛。本页供比选——选哪一个，就把哪一个做成舞台上的歌剧。</p>
+    <div class="hero-meta">
+      <span><span class="dot"></span><b>题材</b>云南本土红色歌剧</span>
+      <span><span class="dot"></span><b>编剧</b>白耀洲 · 彭侠颖 · 孙子岚</span>
+      <span><span class="dot"></span><b>音乐</b>白耀洲 · 彭侠颖 · 孙子岚</span>
+      <span><span class="dot"></span><b>日期</b>2026 秋 · 昆明</span>
+    </div>
+  </div>
+</section>
+
+<!-- 前言 -->
+<section class="section" id="preface" style="background:var(--bg-2)">
+  <div class="sec-kicker">PREFACE</div>
+  <h2 class="sec-title">写在前面</h2>
+  <hr class="sec-rule">
+  <div class="block rv" style="max-width:72ch">
+    <p>各位老师好。有些想法用文字说更清楚，所以先把我们目前的情况写在这里。</p>
+    <p>今天拿出来的是三部红色歌剧的初稿。都还没定稿，但是这三个方向我心里基本有定数——如果选定一个方向，明年二月之前可以拿出定稿。今天想跟大家聊聊：我们为什么做这三部剧，现在做到哪一步了，未来可以往哪些方向走。</p>
+    <p>三部剧的历史事件全部发生在云南——查尼皮在蒙自，皎平渡在禄劝，至公堂在昆明。没有一部是"挂个云南名其实在外地"的。我们就是想把云南自己的红色故事，用云南自己的人、云南自己的音乐，写成舞台上的歌剧。</p>
+    <p>这三部剧，一部写建党初期云南地下党那批不到三十岁的年轻人怎么点起第一盏灯；一部写彝族青年怎么把私仇放下、把命交给红军，在金沙江七天七夜；一部写闻一多先生怎么从书斋走到至公堂，拍案讲完最后一次话。三个时代，三种气质——有马灯的沉郁，有火塘的炽烈，有红烛的燃烧。</p>
+    <p>今天把它们放在一起，不是说三部都要做。是想请各位老师从自己专业的角度看看，哪个方向更值得先立住——不管是从题材的戏剧张力、音乐的可行性、还是未来演出和推广的角度。我们这边三部剧的剧本初稿都已经有了，demo 也做了几首，可以先听一听。选定一个方向之后，我们会把它做扎实，做成一部能真正站在舞台上的戏。</p>
+    <p>再往远一点说，这三部剧不是孤立的三个项目——它是一个系列。如果第一部立住了，后面两部可以跟着做，最终形成"云南红色三部曲"。到那个时候，不只是做三部戏，而是可以围绕它做研究、做课题、做教学、做一个真正扎根云南的本土歌剧创作平台。</p>
+    <p>这个网站把三部剧客观地摆出来——讲了什么、谁在写、有哪些歌可以先听一听、未来可以往哪些方向申报和做课题。大家慢慢看。</p>
+    <p style="color:var(--muted);font-size:15px;margin-top:24px">—— 2026 年 11 月 5 日，昆明</p>
+  </div>
+</section>
+
+<!-- 主创 -->
+<section class="creative-team" id="team">
+  <div class="sec-kicker">CREATIVE TEAM · 暂定</div>
+  <h2 class="sec-title">主创阵容</h2>
+  <hr class="sec-rule">
+  <p style="color:var(--faint);font-size:13.5px;margin-top:16px;max-width:60ch">当前为核心创作组暂定名单，后续将补充出品单位、艺术总监、指挥、舞美设计、灯光设计、服装设计等岗位。</p>
+
+  <div class="rv" style="margin-top:40px;padding:24px 28px;border:1px solid var(--line);background:var(--surface-2)">
+    <div style="font-family:var(--serif);font-size:11px;letter-spacing:.3em;color:var(--accent);margin-bottom:10px">项目总负责人（暂定）</div>
+    <div style="font-size:26px;font-weight:900;letter-spacing:.08em;margin-bottom:6px">马 迪 · 方贤君</div>
+    <div style="font-size:14px;color:var(--muted)">三部剧整体统筹与制作。</div>
+  </div>
+
+  <div class="team-grid rv" style="margin-top:30px">
+    <div class="tm-card">
+      <div class="tm-role">编剧 / 音乐</div>
+      <div class="tm-name">白耀洲 · 彭侠颖 · 孙子岚</div>
+      <div class="tm-desc">三部剧剧本创作与作曲。</div>
+    </div>
+    <div class="tm-card">
+      <div class="tm-role">声乐指导</div>
+      <div class="tm-name">马 迪 · 方贤君 · 孙子岚</div>
+      <div class="tm-desc">演员声乐训练与舞台演唱指导。</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="trio">
+  <div class="sec-kicker">OVERVIEW</div>
+  <h2 class="sec-title">三部剧，三种气质</h2>
+  <hr class="sec-rule">
+  <div class="trio">
+    <a class="tcard rv" href="#show-1">
+      <div class="tcard-emblem"><img src="wenyiduo-site/assets/svg/emblem-spot.svg" alt="星火"></div>
+      <div class="tcard-body">
+        <div class="tcard-yr">1928 — 2024 · 云南</div>
+        <div class="tcard-name">百年星语·破晓1928</div>
+        <div class="tcard-place">查尼皮 → 昆明 → 纪念馆</div>
+        <div class="tcard-tag">一盏马灯，从 1928 穿到 2024。血绢写给后来的人。</div>
+        <div class="tcard-quote">"第三颗星，空了一百年。"</div>
+      </div>
+    </a>
+    <a class="tcard rv" href="#show-2" style="transition-delay:90ms">
+      <div class="tcard-emblem"><img src="wenyiduo-site/assets/svg/emblem-wave.svg" alt="江水"></div>
+      <div class="tcard-body">
+        <div class="tcard-yr">1932 — 1935 · 滇北</div>
+        <div class="tcard-name">山河摆渡人</div>
+        <div class="tcard-place">彝寨火塘 → 皎平渡口</div>
+        <div class="tcard-tag">彝族青年阿木，把命交给红军；阿果怀里，是那张真假油布包。</div>
+        <div class="tcard-quote">"夜不渡皎平——三十七位船工，破了它。"</div>
+      </div>
+    </a>
+    <a class="tcard rv" href="#show-3" style="transition-delay:180ms">
+      <div class="tcard-emblem"><img src="wenyiduo-site/assets/svg/emblem-harp.svg" alt="诗歌"></div>
+      <div class="tcard-body">
+        <div class="tcard-yr">1946 · 昆明</div>
+        <div class="tcard-name">闻一多先生</div>
+        <div class="tcard-place">西南联大 → 至公堂 → 西仓坡</div>
+        <div class="tcard-tag">诗人拍案，最后一次讲演。一支红烛，从点燃到燃尽。</div>
+        <div class="tcard-quote">"正义是杀不完的，因为真理永远存在。"</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="matrix" style="background:var(--bg-2)">
+  <div class="sec-kicker">COMPARISON</div>
+  <h2 class="sec-title">一张表，看清楚差别</h2>
+  <hr class="sec-rule">
+  <div class="matrix-wrap rv">
+    <table class="matrix">
+      <thead><tr><th>维度</th><th>《百年星语·破晓1928》</th><th>《山河摆渡人》</th><th>《闻一多先生》</th></tr></thead>
+      <tbody>
+        <tr><th>年代跨度</th><td>1928 — 1930 — 2024（跨时空）</td><td>1932 — 1935 — 2009（跨时空）</td><td>1946（集中于 7·11—7·15）</td></tr>
+        <tr><th>地点</th><td>查尼皮茅屋 → 昆明 → 纪念馆</td><td>滇北彝寨 → 扎西 → 昆明 → 皎平渡</td><td>昆明·联大 → 至公堂 → 西仓坡</td></tr>
+        <tr><th>核心事件</th><td>中共云南一大、吴澄李国柱夫妇就义</td><td>巧渡金沙江、龙云献图、彝寨军民同心</td><td>李公朴遇刺、最后一次讲演、闻一多殉难</td></tr>
+        <tr><th>题材气质</th><td>星火相传 · 跨时空对话</td><td>军民同心 · 彝家儿女</td><td>文人殉道 · 民主斗士</td></tr>
+        <tr><th>叙事结构</th><td>现代线（2024 纪念馆）× 历史线（1928-30）双线交织</td><td>六幕顺叙（1932 火塘→2009 纪念碑）</td><td>序幕+三幕+尾声（集中于 7·11—7·15 五天）</td></tr>
+        <tr><th>主角设定</th><td>历史真实烈士 + 当代青年群像</td><td>阿木、阿果（彝族青年，艺术虚构）</td><td>闻一多（真实历史人物）</td></tr>
+        <tr><th>核心意象</th><td>马灯 · 血绢 · 第三颗星</td><td>火塘 · 红绳骨哨 · 凤凰帕子 · 木船</td><td>红烛 · 山茶 · 书斋 · 油灯</td></tr>
+        <tr><th>唱段规模</th><td>26 首 · 20 余位角色</td><td>40 首 · 10 位角色</td><td>十余段唱段 · 12 位角色</td></tr>
+        <tr><th>情感基调</th><td>沉郁 — 昂扬 — 跨时空回声</td><td>炽烈 — 悲壮 — 温暖收束</td><td>庄严 — 悲愤 — 燃烧</td></tr>
+        <tr><th>音乐设想</th><td>室内乐 + 现代电子音色（跨时空）</td><td>彝族民歌 + 船工号子交响化</td><td>美声咏叹 + 室内乐</td></tr>
+        <tr><th>完成度</th><td>剧本初稿 · 站点已搭</td><td>剧本初稿 · 站点已搭</td><td>V4.1 初稿 · 选定方向后 2027.2 前可定稿</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ NO.1 百年星语·破晓1928 ============ -->
+<section class="show-section" id="show-1">
+  <img class="show-emblem" src="wenyiduo-site/assets/svg/emblem-spot.svg" alt="">
+  <div class="show-head rv">
+    <div class="show-num">NO.1 · 1928 → 2024</div>
+    <div class="show-name-wrap">
+      <h2 class="show-name">百年星语·破晓1928</h2>
+      <div class="show-place">查尼皮 · 昆明 · 跨时空</div>
+    </div>
+  </div>
+
+  <div class="audio-strip rv">
+    <div class="audio-head">
+      <div class="label">试听</div>
+      <div class="song">灯下的约定</div>
+      <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖</div>
+      <audio controls preload="none" src="wenyiduo-site/assets/audio/dengxiadeyueding.mp3"></audio>
+    </div>
+    <div class="audio-lyrics">马灯的光落在纸页上
+字里行间是今天的分量
+我把希望缝进布衣裳
+等少年们长大，让他们听我讲
+
+这一夜茅屋的星光
+是我们炽热的信仰
+灯照亮的路是我们共同的向往
+直到光明铺满山岗
+直到山巅升起朝阳</div>
+  </div>
+
+  <div class="show-photo rv">
+    <img src="wenyiduo-site/assets/huangyangjie-1928.jpg" alt="1928 星火">
+  </div>
+  <div class="cap">1928 年，云南地下党在查尼皮的茅屋里点起一盏马灯。（配图为革命根据地早期风貌示意）</div>
+
+  <div class="block rv">
+    <div class="block-h">创作谈</div>
+    <p>这不是一部写战斗的剧。我们写的是一百年后，几个年轻人在查尼皮纪念馆里，突然听见了 1928 年那些人留给他们的话。</p>
+    <p>吴澄、李国柱、王德三、张经辰——这些名字在云南党史里很重，但他们牺牲的时候都不到三十岁。我们不想把他们写成纪念碑上的铜像，想写他们也是年轻人，也会犹豫，也会害怕，也在一盏马灯底下商量下一步往哪走。他们把血绢写下来，不是为了给历史留证据，是为了让后来的人知道——曾经有人在这黑屋子里点过灯。</p>
+    <p>一盏马灯亮了一百年，不是为了照亮纪念馆的玻璃柜，是为了今天站在柜前的那几个孩子，还能看见光。第三颗星为什么空了一百年？因为点灯的人没等到天亮。但他们知道，总会有人替他们等到。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">戏剧结构</div>
+    <p><b style="color:var(--ink)">一条马灯，从 1928 穿到 2024。</b>序幕设在 2024 年查尼皮纪念馆"云南革命火种"特展区——陈馆长带着林溪、萧声、苏云、阿依、老周、吴小芸几位当代青年布展。他们在展柜里发现一盏马灯、一方血绢、一封没写完的信。灯光暗下，1928 年的茅屋亮了。</p>
+    <p>历史线三幕：<b style="color:var(--ink)">第一幕《茅屋·铸魂》</b>（1928）写中共云南一大在查尼皮召开前后的潜伏斗争；<b style="color:var(--ink)">第二幕《星火·燎原》</b>（1929—1930）写云南省委成立、王德三张经辰吴澄李国柱这批年轻共产党人在昆明地下工作；<b style="color:var(--ink)">第三幕《血誓·永生》</b>（1930 秋冬）写他们先后被捕、就义。终幕《回声·向前》回到 2024，当代青年在纪念馆里接力。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">时间线（剧本五幕）</div>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-when">序幕 · 2024</div><div class="tl-what">查尼皮纪念馆特展区，陈馆长带林溪、萧声、苏云、阿依、老周、吴小芸布展，发现马灯与血绢。</div></div>
+      <div class="tl-item"><div class="tl-when">第一幕 · 1928</div><div class="tl-what">茅屋铸魂。吴澄、李国柱、王德三、张经辰在查尼皮一带活动，建立组织。</div></div>
+      <div class="tl-item"><div class="tl-when">第二幕 · 1929 — 1930</div><div class="tl-what">星火燎原。云南省委成立，地下工作展开，阿明、阿牛、阿妹、李开文等群众卷入。</div></div>
+      <div class="tl-item"><div class="tl-when">第三幕 · 1930 秋 — 冬</div><div class="tl-what">血誓永生。王德三、张经辰、吴澄、李国柱先后被捕，昆明刑场就义。</div></div>
+      <div class="tl-item"><div class="tl-when">终幕 · 跨时空</div><div class="tl-what">回声向前。2024 的青年在马灯前接力，血绢展开——"第三颗星，空了一百年"。</div></div>
+    </div>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">人物表（20 余位 · 历史线 + 现代线）</div>
+    <div class="people">
+      <div class="p-card"><div class="p-name">吴 澄</div><div class="p-role">历史线 · 真实烈士</div><div class="p-desc">云南女共产党员，云南省临委委员。与李国柱是革命夫妻，1930 年同时就义。</div></div>
+      <div class="p-card"><div class="p-name">李国柱</div><div class="p-role">历史线 · 真实烈士</div><div class="p-desc">云南共青团创始人，与吴澄并肩战斗，同年牺牲。</div></div>
+      <div class="p-card"><div class="p-name">王德三</div><div class="p-role">历史线 · 真实烈士</div><div class="p-desc">中共云南省委第一任书记。1930 年被捕就义。</div></div>
+      <div class="p-card"><div class="p-name">张经辰</div><div class="p-role">历史线 · 真实烈士</div><div class="p-desc">云南省委代理书记，与王德三同时牺牲。</div></div>
+      <div class="p-card"><div class="p-name">李开文 / 阿明 / 阿牛 / 阿妹</div><div class="p-role">历史线 · 群众群像</div><div class="p-desc">查尼皮一带的农民、少先队员，支援省委工作。</div></div>
+      <div class="p-card"><div class="p-name">陈馆长</div><div class="p-role">现代线 · 纪念馆</div><div class="p-desc">查尼皮纪念馆馆长，布展时揭开历史。</div></div>
+      <div class="p-card"><div class="p-name">林 溪 / 萧 声 / 苏 云 / 阿 依</div><div class="p-role">现代线 · 当代青年</div><div class="p-desc">四位不同专业的年轻人，在马灯与血绢前与 1928 对话。</div></div>
+      <div class="p-card"><div class="p-name">老 周 / 吴小芸</div><div class="p-role">现代线 · 纪念馆职工</div><div class="p-desc">老周守馆多年，吴小芸是志愿者。</div></div>
+    </div>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">三条主线</div>
+    <div class="verse">
+      <div class="v-title">剧本主线</div>
+      <p>马灯照着一间茅屋 —— 查尼皮的夜。<br>血绢写给后来的人 —— 吴澄留给 2024。<br>第三颗星空了一百年 —— 有人永远没等到天亮。</p>
+    </div>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">艺术构想</div>
+    <div class="concept">
+      <div class="c-card"><div class="c-h">音乐</div><div class="c-p">历史线用室内乐（弦乐四重奏 + 钢琴），现代线加电子音色；马灯主题是一把持续嗡鸣的低音弦。</div></div>
+      <div class="c-card"><div class="c-h">舞美</div><div class="c-p">一台转台：左边 2024 纪念馆玻璃展柜，右边 1928 茅屋土墙。转台转动，两条线叠化。</div></div>
+      <div class="c-card"><div class="c-h">核心意象</div><div class="c-p">"一盏马灯"——序幕亮起，历史线不灭，终幕交到 2024 青年手里。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NO.2 山河摆渡人 ============ -->
+<section class="show-section" id="show-2" style="background:var(--bg-2)">
+  <img class="show-emblem" src="wenyiduo-site/assets/svg/emblem-wave.svg" alt="">
+  <div class="show-head rv">
+    <div class="show-num">NO.2 · 1932 → 1935 → 2009</div>
+    <div class="show-name-wrap">
+      <h2 class="show-name">山河摆渡人</h2>
+      <div class="show-place">滇北彝寨 · 扎西 · 昆明 · 皎平渡</div>
+    </div>
+  </div>
+
+  <div class="audio-strip rv">
+    <div class="audio-head">
+      <div class="label">试听</div>
+      <div class="song">火塘恋</div>
+      <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖</div>
+      <audio controls preload="none" src="wenyiduo-site/assets/audio/huotanglian.mp3"></audio>
+    </div>
+    <div class="audio-lyrics">火塘里的火烧得旺，阿妹坐在我身旁。
+不敢看，不敢想，怕看久了心发慌。
+三年了，三年了阿果，
+我心里有一团火，整整烧了三年。
+
+火塘里的火照着脸，阿哥就在我身边。
+不敢听，不敢想，怕听多了睡不着。
+
+阿木哥，我听着呢。</div>
+  </div>
+  <div class="audio-strip rv">
+    <div class="audio-head">
+      <div class="label">试听</div>
+      <div class="song">等你回来</div>
+      <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖</div>
+      <audio controls preload="none" src="wenyiduo-site/assets/audio/dengnihuilai.mp3"></audio>
+    </div>
+    <div class="audio-lyrics">火塘的火还在燃，你握紧我的手腕。
+半块坨坨肉入喉暖，你笑着说这般最是心安。
+阿木哥你可曾知晓，那三日攒盐才换得这一餐。
+你许诺来日岁月安然，便归来与我圆满。
+
+可是我怕你远赴千山，火塘只剩下我的孤单。
+可是我怕岁岁火把绚烂，只剩空灯照尽阑珊。
+可父辈鲜血尚未风干，可穷苦人间仍盼青天。
+阿木哥你放心去闯，我不牵绊也不阻拦。
+我守着村寨守着塘火，守着岁岁期盼。
+
+塘火不熄，念你的心不散，
+三年我等，五年我盼，
+此生只等着你，归来平安。
+火塘长明河山漫漫，我等你，等你归来平安。</div>
+  </div>
+  <div class="audio-strip rv">
+    <div class="audio-head">
+      <div class="label">试听</div>
+      <div class="song">渡江</div>
+      <div class="credit">曲：彭侠颖 · 纯音乐段落</div>
+      <audio controls preload="none" src="wenyiduo-site/assets/audio/dujiang.mp3"></audio>
+    </div>
+    <div class="audio-lyrics" style="font-style:normal;color:var(--faint);font-family:var(--serif);font-size:13px;letter-spacing:.05em">纯音乐段落 · 第四幕渡江场景配乐 · 无演唱词</div>
+  </div>
+
+  <div class="show-photo rv">
+    <img src="wenyiduo-site/assets/jiaopingdu-1935.jpg" alt="金沙江皎平渡 1935">
+  </div>
+  <div class="cap">1935 年 5 月 3—9 日，七条木船、三十七位船工、七天七夜。昆明市档案馆藏。</div>
+
+  <div class="block rv">
+    <div class="block-h">创作谈</div>
+    <p>1935 年 5 月那七天七夜，渡过去的是三万红军，渡过去的也是一个彝族青年阿木的命。</p>
+    <p>我们不想把这部戏写成"红军多伟大"的宣传片。我们想写一个彝家儿子——他原本是要报杀父之仇的，仇人叫刘矬子。他在火塘边跟阿果对唱的时候，还不知道三年后会把仇放下，把命交出去。他遇见红军，不是因为红军讲了什么大道理，是因为看见这支队伍喝稀粥、吃野菜，却把肉让给船工——他第一次知道，世界上还有这样的人。</p>
+    <p>阿果怀里那张油布包，是真的，也是假的。她不知道自己送出去的是真情报，还是自己最后的信。她头上那方凤凰帕子，从她妈手里传下来，最后浸在血泊里——尾幕再展开的时候，像一只凤在振翅。我们想让观众记住的不是"巧渡金沙江"这个历史名词，是 1932 年冬那塘火，到 2009 年纪念碑前的长明火——一直没熄。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">戏剧结构</div>
+    <p><b style="color:var(--ink)">彝族青年阿木，父仇在刘矬子身上。</b>序幕 1932 年冬，滇北金沙江畔彝寨火塘边，阿木与阿果对唱《火塘恋》，阿木咏叹《父仇》——刘矬子杀了他爹。山外传来说红军是什么队伍，阿果唱《等你回来》送他出门。</p>
+    <p><b style="color:var(--ink)">1935 年，阿木已经成了红军王团长手下的战士。</b>第一幕扎西誓师，阿木与指战员合唱《火种》《过冬》，唱《弃仇》——他放下私仇，跟队伍北渡。第二幕佯攻昆明、龙云献图，阿木与阿果隔空对唱《山顶》。第三幕彝寨危局：阿果怀里揣着真油布包，阿木带假图东走引敌，两人一分为二。第四幕皎平渡，船工李老爹、刘矬子（已沦为匪）、苟二，阿果牺牲时头上的凤凰帕子浸在血泊里。尾幕 2009 年秋，船工纪念碑前，暮年阿细姐带彝寨老人来看三十七位船工的名字。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">时间线（剧本六幕）</div>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-when">序幕 · 1932 冬</div><div class="tl-what">彝寨火塘边。阿木阿果对唱，父仇埋下。</div></div>
+      <div class="tl-item"><div class="tl-when">第一幕 · 1935.2</div><div class="tl-what">扎西誓师。阿木投红军，唱《弃仇》《出发》。</div></div>
+      <div class="tl-item"><div class="tl-when">第二幕 · 1935.4</div><div class="tl-what">佯攻昆明、龙云献图。阿木阿果《山顶》隔空对唱。</div></div>
+      <div class="tl-item"><div class="tl-when">第三幕 · 1935.4 末—5 初</div><div class="tl-what">彝寨危局。真假油布包一分为二，银镯相赠。</div></div>
+      <div class="tl-item"><div class="tl-when">第四幕 · 1935.5.3—9</div><div class="tl-what">皎平渡七天七夜。阿果牺牲，刘矬子被击毙沉江。</div></div>
+      <div class="tl-item"><div class="tl-when">尾幕 · 2009 秋</div><div class="tl-what">船工纪念碑。暮年阿细姐带彝寨老人，读三十七位船工姓名。</div></div>
+    </div>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">人物表（10 位角色）</div>
+    <div class="people">
+      <div class="p-card"><div class="p-name">阿 木</div><div class="p-role">男主 · 彝族青年</div><div class="p-desc">父仇在刘矬子身上，遇红军后弃仇北渡。腕上一直戴着阿果送的银镯。</div></div>
+      <div class="p-card"><div class="p-name">阿 果</div><div class="p-role">女主 · 彝族姑娘</div><div class="p-desc">阿木的恋人，发带上一直系着母亲的凤凰帕子。牺牲时帕子浸血。</div></div>
+      <div class="p-card"><div class="p-name">红军王团长</div><div class="p-role">红军指挥员</div><div class="p-desc">扎西誓师后率部，皎平渡指挥渡江。</div></div>
+      <div class="p-card"><div class="p-name">小马哥</div><div class="p-role">红军战士</div><div class="p-desc">阿木在队伍里的兄弟，《过冬》《出发》合唱。</div></div>
+      <div class="p-card"><div class="p-name">燕南云</div><div class="p-role">情报线</div><div class="p-desc">与真假油布包、传信线相关。</div></div>
+      <div class="p-card"><div class="p-name">黄副官</div><div class="p-role">国民党方</div><div class="p-desc">红军侦察队的对手。</div></div>
+      <div class="p-card"><div class="p-name">阿细姐</div><div class="p-role">彝寨长者</div><div class="p-desc">尾幕以暮年形象登场，带彝寨老人读纪念碑。</div></div>
+      <div class="p-card"><div class="p-name">刘矬子</div><div class="p-role">反派 · 杀父仇人</div><div class="p-desc">序幕里杀了阿木父亲，三年后在皎平渡被击毙沉江。</div></div>
+      <div class="p-card"><div class="p-name">苟 二</div><div class="p-role">配角</div><div class="p-desc">与刘矬子一伙。</div></div>
+      <div class="p-card"><div class="p-name">船工李老爹</div><div class="p-role">船工代表</div><div class="p-desc">三十七位船工之一，破"夜不渡皎平"旧俗。</div></div>
+    </div>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">六条伏笔线</div>
+    <div class="people">
+      <div class="p-card"><div class="p-name">红绳骨哨</div><div class="p-role">从序幕火塘 → 尾幕攥得发烫</div><div class="p-desc">阿爹遗物，阿果替他保管多年，临行前交回他手里。</div></div>
+      <div class="p-card"><div class="p-name">凤凰帕子</div><div class="p-role">从序幕 → 尾幕如凤振翅</div><div class="p-desc">母亲绣帕，始终在阿果发带上，牺牲时浸在血泊。</div></div>
+      <div class="p-card"><div class="p-name">银 镯</div><div class="p-role">第三幕 · 送即交命</div><div class="p-desc">阿果送镯，阿木一直戴在腕上。</div></div>
+      <div class="p-card"><div class="p-name">真假油布包</div><div class="p-role">第三幕 → 第四幕</div><div class="p-desc">月光下一分为二，他带假图东走，她怀真图西送。</div></div>
+      <div class="p-card"><div class="p-name">刘矬子的鞭子</div><div class="p-role">序幕 → 第四幕沉江</div><div class="p-desc">杀父之仇，三年执念，崖上对峙后被击毙沉江。</div></div>
+      <div class="p-card"><div class="p-name">夜不渡皎平</div><div class="p-role">第二幕 → 第四幕</div><div class="p-desc">祖辈旧俗，三十七位船工破俗，七只木船昼夜轮转。</div></div>
+    </div>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">代表曲目（40 首 · 节录）</div>
+    <div class="songs-grid">
+      <div class="song-item"><div class="song-no">曲目 01 · 序幕</div><div class="song-name">火塘恋</div><div class="song-perf">阿木、阿果 二重唱</div></div>
+      <div class="song-item"><div class="song-no">曲目 02 · 序幕</div><div class="song-name">父仇</div><div class="song-perf">阿木 咏叹调</div></div>
+      <div class="song-item"><div class="song-no">曲目 04 · 序幕</div><div class="song-name">等你回来</div><div class="song-perf">阿果 咏叹调 · 主题歌</div></div>
+      <div class="song-item"><div class="song-no">曲目 05 · 第一幕</div><div class="song-name">火种</div><div class="song-perf">阿木、红军指战员 合唱</div></div>
+      <div class="song-item"><div class="song-no">曲目 07 · 第一幕</div><div class="song-name">弃仇</div><div class="song-perf">阿木 咏叹调</div></div>
+      <div class="song-item"><div class="song-no">曲目 08 · 第一幕</div><div class="song-name">出发</div><div class="song-perf">全员 合唱</div></div>
+      <div class="song-item"><div class="song-no">曲目 09 · 第二幕</div><div class="song-name">山顶</div><div class="song-perf">阿木、阿果 隔空对唱</div></div>
+      <div class="song-item"><div class="song-no">曲目 10 · 第二幕</div><div class="song-name">昆明城外</div><div class="song-perf">阿木 咏叹调</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NO.3 闻一多先生 ============ -->
+<section class="show-section" id="show-3">
+  <img class="show-emblem" src="wenyiduo-site/assets/svg/emblem-harp.svg" alt="">
+  <div class="show-head rv">
+    <div class="show-num">NO.3 · 1946.7.11—7.15</div>
+    <div class="show-name-wrap">
+      <h2 class="show-name">闻一多先生</h2>
+      <div class="show-place">昆明 · 西南联大 · 至公堂 · 西仓坡</div>
+    </div>
+  </div>
+
+  <div class="show-photo rv">
+    <img src="wenyiduo-site/assets/zhigongtang-now.jpg" alt="至公堂">
+  </div>
+  <div class="cap">云南大学至公堂——闻一多《最后一次讲演》原址。</div>
+
+  <div class="block rv">
+    <div class="block-h">创作谈</div>
+    <p>我们不写一个"闻一多多么伟大"的戏。我们写一个诗人，被时代逼到必须拍案的那五天。</p>
+    <p>7 月 11 日李公朴死，7 月 15 日他自己也死——中间只隔四天。他原本可以躲。他儿子闻立鹤已经劝过他"少说几句"，朋友也劝，他夫人高贞整夜不睡地等他回来。但他走上了至公堂。那天他本来不发言，是台下特务在捣乱，他站起来抢过话筒。</p>
+    <p>一支红烛从书斋点着，烧到讲台，烧到西仓坡那十步路。我们想让观众记得的不是"民主战士闻一多"这个称号，是那个拍桌子的人、那个前一天晚上还在刻印章补贴家用的人、那个最后一天早上还跟夫人说"我回来吃饭"的人。他不是不怕死，他是想清楚了——有些话，这个时候必须有人说。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">戏剧结构</div>
+    <p><b style="color:var(--ink)">一支红烛，从点燃到燃尽。</b>序幕闻一多在书斋点烛；第一幕《红烛》写芝加哥归国、联大九年；第二幕《死水》写"一二·一"惨案、李公朴 7·11 遇刺；第三幕《燃烧》写 7·15 下午至公堂《最后一次讲演》、傍晚西仓坡殉难；尾声《红烛不灭》把火交到青年手里。</p>
+  </div>
+
+  <div class="audio-strip rv">
+    <div class="audio-head">
+      <div class="label">A7 咏叹调</div>
+      <div class="song">远方的国</div>
+      <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖</div>
+      <audio controls preload="none" src="wenyiduo-site/assets/audio/yuanfangdeguo.mp3"></audio>
+    </div>
+    <div class="audio-lyrics">隔着大洋与风雪，
+我听见黄河在夜半呜咽。
+风里摇着的是谁家的灯，
+雪里冷着的是哪一年的夜。
+
+家书字字，都是故国的血，
+这支笔，蘸着月光写。
+写到故国的名字，笔尖先裂，
+裂成山河的缺口，也写不歇。
+
+雁过长空，不捎半句别，
+我把这砚台，磨成铁。
+不是不贪这异乡的月，
+是故国的钟，正等我去接。
+
+等我归来——把这一身雪，
+抖成故国家山的页。
+等我归来——把这腔血，
+灌进干涸了百年的江河，永不竭。</div>
+  </div>
+
+  <div class="audio-strip rv">
+    <div class="audio-head">
+      <div class="label">试听</div>
+      <div class="song">归舟</div>
+      <div class="credit">曲：彭侠颖 · 器乐段落</div>
+      <audio controls preload="none" src="wenyiduo-site/assets/audio/guizhou.mp3"></audio>
+    </div>
+    <div class="audio-lyrics" style="font-style:normal;color:var(--faint);font-family:var(--serif);font-size:13px;letter-spacing:.05em">器乐段落 · 归舟场景配乐 · 无演唱词</div>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">时间线（剧本五段）</div>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-when">序幕 · 书斋</div><div class="tl-what">闻一多点烛，写《红烛》。</div></div>
+      <div class="tl-item"><div class="tl-when">第一幕 · 红烛</div><div class="tl-what">芝加哥归国 → 西南联大九年，刻印章补贴家用。</div></div>
+      <div class="tl-item"><div class="tl-when">第二幕 · 死水</div><div class="tl-what">"一二·一"四烈士；1946.7.11 李公朴遇刺。</div></div>
+      <div class="tl-item"><div class="tl-when">第三幕 · 燃烧</div><div class="tl-what">7.15 下午至公堂讲演，傍晚西仓坡遇刺。</div></div>
+      <div class="tl-item"><div class="tl-when">尾声 · 红烛不灭</div><div class="tl-what">学生接过火把，"我把火交给你们了"。</div></div>
+    </div>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">人物表（12 人 · V4.1）</div>
+    <div class="people">
+      <div class="p-card"><div class="p-name">闻一多</div><div class="p-role">男中音</div><div class="p-desc">诗人、学者、民主斗士。从书斋走向街头。</div></div>
+      <div class="p-card"><div class="p-name">高 贞</div><div class="p-role">女中音</div><div class="p-desc">闻一多夫人。灯下缝衣，深夜守门。</div></div>
+      <div class="p-card"><div class="p-name">闻立鹤</div><div class="p-role">男高音</div><div class="p-desc">长子。西仓坡扑到父亲身上，身中五枪。</div></div>
+      <div class="p-card"><div class="p-name">李公朴</div><div class="p-role">男中音</div><div class="p-desc">民主战士。7·11 牺牲，闻一多为他站完最后一班岗。</div></div>
+      <div class="p-card"><div class="p-name">张曼筠</div><div class="p-role">女中音</div><div class="p-desc">李公朴夫人。</div></div>
+      <div class="p-card"><div class="p-name">吴 晗</div><div class="p-role">男中音</div><div class="p-desc">联大同事与战友。</div></div>
+      <div class="p-card"><div class="p-name">学生甲 / 乙 / 丙</div><div class="p-role">合唱</div><div class="p-desc">联大学生，从守灵到送殡。</div></div>
+      <div class="p-card"><div class="p-name">主 持 人</div><div class="p-role">配角</div><div class="p-desc">至公堂追悼大会主持人。</div></div>
+      <div class="p-card"><div class="p-name">特务头目</div><div class="p-role">反派</div><div class="p-desc">台下黑礼帽，墙角熄了灯的吉普车。</div></div>
+    </div>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">代表唱段（定稿原文）</div>
+    <div class="verse">
+      <div class="v-title">C3 · 咏叹调 · 最后的讲演（节录）</div>
+      <p>你们杀死了一个李公朴，会有千百万个李公朴站起来！<br>正义是杀不完的，因为真理永远存在！<br>我们不怕死……前脚跨出大门，后脚就不准备再跨进大门！</p>
+    </div>
+    <div class="verse">
+      <div class="v-title">A5 · 咏叹调 · 红烛（节录，1923 原诗）</div>
+      <p>红烛啊！这样红的烛！<br>诗人啊！吐出你的心来比比，可是一般颜色？</p>
+    </div>
+    <div class="verse">
+      <div class="v-title">E3 · 咏叹调 · 薪火（尾声）</div>
+      <p>我把火，交给你们了。<br>火里有我的字，我的诗，我的路。<br>你们不必记得我的名字，<br>记得路的方向，就够走一生。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- 申报对照 -->
+<section class="section" id="apply" style="background:var(--bg-2)">
+  <div class="sec-kicker">国家艺术基金 · 申报维度对照</div>
+  <h2 class="sec-title">客观陈列，供比选</h2>
+  <hr class="sec-rule">
+  <p class="rv" style="color:var(--muted);margin-top:24px;max-width:78ch;font-size:15.5px;line-height:1.9">下表按国家艺术基金舞台艺术创作项目常见评审维度，对照三部剧的客观事实。不做打分，不下结论，供专家从云南民族大学办学定位与资源禀赋出发自行判断。</p>
+  <div class="matrix-wrap rv" style="margin-top:30px">
+    <table class="matrix">
+      <thead><tr><th>评审维度</th><th>《百年星语·破晓1928》</th><th>《山河摆渡人》</th><th>《闻一多先生》</th></tr></thead>
+      <tbody>
+        <tr><th>题材类别</th><td>重大革命历史 · 建党初期 · 地方党史</td><td>重大革命历史 · 长征 · 民族团结</td><td>重大革命历史 · 爱国民主人士 · 抗战胜利后</td></tr>
+        <tr><th>云南在地性</th><td>查尼皮（中共云南一大）原址，史实与地望直接对应</td><td>皎平渡在云南禄劝，彝寨在滇北</td><td>西南联大、至公堂、西仓坡均在昆明</td></tr>
+        <tr><th>民族元素</th><td>以党史为主，民族元素较弱</td><td>彝族主角、彝寨火塘、彝族民歌基调</td><td>汉族知识分子题材，民族元素弱</td></tr>
+        <tr><th>跨时空当代性</th><td>现代线（2024 纪念馆）× 历史线（1928—1930）双线交织</td><td>尾幕 2009 纪念碑回望，主体顺叙</td><td>集中于 1946.7.11—7.15 五天</td></tr>
+        <tr><th>剧本完成度</th><td>剧本初稿 · 26 首 · 站点已搭</td><td>剧本初稿 · 40 首 · 站点已搭</td><td>V4.1 初稿 · 选定后 2027.2 前可定稿</td></tr>
+        <tr><th>演出团队匹配（民大）</th><td>室内乐 + 朗诵 + 青年合唱，声乐系 / 舞蹈系均可参与</td><td>彝族合唱团 + 民族舞蹈 + 三弦 / 芦笙，最贴合民大民族艺术资源</td><td>美声独唱 + 室内乐，声乐系歌剧方向主导</td></tr>
+        <tr><th>舞美与制作成本</th><td>转台双线（纪念馆展柜 / 1928 茅屋），中等</td><td>金沙江斜坡、真船道具、火塘、彝寨布景，较高</td><td>书斋 / 灵堂 / 至公堂三景，最低</td></tr>
+        <tr><th>高校思政适配</th><td>建党初期 + 当代青年对话，"百年回望"主题直接对应</td><td>长征精神 + 民族团结 + 军民鱼水情</td><td>"一二·一"运动 + 民主斗士 + 爱国知识分子</td></tr>
+        <tr><th>政策口径</th><td>建党精神、云南地方党史、青年理想信念</td><td>长征精神、铸牢中华民族共同体意识</td><td>爱国民主统一战线、西南联大精神</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 多元路径 -->
+<section class="section" id="paths">
+  <div class="sec-kicker">POSSIBLE PATHS</div>
+  <h2 class="sec-title">可以走的几条路</h2>
+  <hr class="sec-rule">
+
+  <div class="block rv">
+    <div class="block-h">一 · 舞台作品申报</div>
+    <p><b style="color:var(--ink)">国家艺术基金 · 大型舞台剧和作品创作资助项目</b>——歌剧、音乐剧均在资助类别内。三部剧均为云南本土红色题材，地望清晰、史实扎实、人物有原型，符合重大革命历史题材资助导向。可独立申报一部，也可整合为"云南红色三部曲"系列申报重大选题。</p>
+    <p><b style="color:var(--ink)">云南省文艺精品创作专项资金</b>——省委宣传部重点扶持云南题材、民族团结、红色主题舞台艺术作品。三部剧都在云南发生、写云南人物、用云南素材，在地性是天然优势。</p>
+    <p style="color:var(--muted);font-size:15px"><b style="color:var(--ink)">为什么走这条路：</b>舞台作品是最终成果，也是所有后续课题和研究的"实体载体"。没有一部立得住的戏，研究院和课题就没有落脚点。</p>
+    <p style="color:var(--faint);font-size:13px">参考：国家艺术基金 2026 年度全国歌剧立项 20 项、音乐剧 147 项。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">二 · 学术课题与教研项目</div>
+    <p><b style="color:var(--ink)">思政育人方向</b>——三部剧均可作为课程思政示范课程、大中小学思政课一体化建设项目的配套教学素材。学生先看戏，再上思政课，比纯课堂讲授有代入感得多。</p>
+    <p><b style="color:var(--ink)">党史与历史研究方向</b>——《破晓1928》写中共云南一大查尼皮会议，可对接云南地方党史研究课题；《闻一多先生》写西南联大与最后一次讲演，可对接联大研究专项、爱国民主人士研究课题；《山河摆渡人》写巧渡金沙江与彝汉同心，可对接长征史、民族团结史研究课题。</p>
+    <p><b style="color:var(--ink)">民族艺术研究方向</b>——《山河摆渡人》把彝族民歌、火塘对唱、船工号子交响化，可对接铸牢中华民族共同体意识研究、云南民族音乐舞蹈研究课题。</p>
+    <p style="color:var(--muted);font-size:15px"><b style="color:var(--ink)">每部剧可延伸的具体研究方向：</b></p>
+    <p style="font-size:14.5px;line-height:2;color:var(--muted)">
+    <b style="color:var(--gold)">《破晓1928》</b>：吴澄李国柱夫妇研究、云南共青团创建史、跨时空叙事手法（当代青年与革命先辈对话）、红色纪念馆沉浸式展陈设计、马灯意象的符号学研究、青年理想信念教育路径。<br>
+    <b style="color:var(--river)">《山河摆渡人》</b>：巧渡金沙江史实考、彝寨军民同心与民族团结史、彝族民歌交响化改编、金沙江船工号子音乐研究、火塘文化与彝族婚恋习俗、红军长征过云南民族政策研究。<br>
+    <b style="color:var(--camellia)">《闻一多先生》</b>：西南联大知识分子群像研究、《红烛》《死水》诗歌咏叹改编、最后一次讲演文本考、"一二·一"运动史料整理、闻一多篆刻艺术研究、文人殉道精神的当代价值。
+    </p>
+    <p style="color:var(--muted);font-size:15px"><b style="color:var(--ink)">为什么走这条路：</b>高校申报课题比申报国家艺术基金门槛低、周期短、见效快。而且有了课题，教授就能挂名参与，学生就能进组——这是把"做戏"变成"教学+研究+创作"一体化的关键一步。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">三 · 跨剧整体研究方向</div>
+    <p><b style="color:var(--ink)">云南红色题材歌剧创作研究</b>——三部剧分别对应建党初期、长征时期、解放战争时期三个阶段，可作为"云南红色歌剧谱系"整体研究，形成从史料整理到舞台创作的方法论。</p>
+    <p><b style="color:var(--ink)">红色文旅融合路径</b>——查尼皮、皎平渡、西仓坡都是真实红色地标，歌剧演出可与当地纪念馆、红色景区联动，形成"看戏+打卡+研学"的红色文旅线路。</p>
+    <p><b style="color:var(--ink)">红色文化进校园</b>——三部剧均可改编为校园版（精简演员阵容、简化舞美），走进大中小学巡演，配套思政课教材和教师读本。</p>
+    <p><b style="color:var(--ink)">云南本土歌剧人才培养模式</b>——以三部剧为教学案例，探索"剧本创作+声乐训练+舞台实践"一体化的民族地区歌剧人才培养路径。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">四 · 机构与平台建设</div>
+    <p>以三部原创歌剧为基础，可考虑申报成立<b style="color:var(--ink)">云南本土原创歌剧研究院（或中心）</b>——依托云南民族大学艺术学院，聚焦云南红色题材、民族题材歌剧的创作、研究与人才培养，形成"创作—研究—展演—教学"一体化平台。</p>
+    <p>路径参考：先以单部剧作为切入点，滚动积累作品与研究成果，再申报校级/省级研究平台，逐步扩展为具有地域特色的歌剧创作研究基地。</p>
+    <p style="color:var(--muted);font-size:15px"><b style="color:var(--ink)">为什么走这条路：</b>云南有丰富的民族文化和红色历史资源，但一直没有一个专注做本土原创歌剧的机构。三部剧不是孤立的三个项目，是一个系列、一个方向——做成平台，就有了持续产出的能力，不是做完一部就散了。</p>
+  </div>
+
+  <div class="block rv" style="border-left:3px solid var(--accent);padding-left:20px">
+    <div class="block-h" style="color:var(--accent)">整体规划 · 云南红色三部曲</div>
+    <p>三部剧时间线恰好构成云南党史三段关键节点：<b style="color:var(--ink)">1928 查尼皮（破晓）→ 1935 皎平渡（摆渡）→ 1946 昆明（闻一多）</b>。未来可视项目进展，整合为"云南红色三部曲"系列，统一申报国家级重大选题，或分阶段独立申报、滚动推进。当前阶段：先选定一部作为首剧立项，其余两部作为后续储备。</p>
+  </div>
+</section>
+
+<!-- 院校支持 -->
+<section class="section" id="support" style="background:var(--bg-2)">
+  <div class="sec-kicker">WHAT WE NEED</div>
+  <h2 class="sec-title">要把这部剧排出来，需要学校支持这些</h2>
+  <hr class="sec-rule">
+  <p class="rv" style="color:var(--muted);margin-top:24px;max-width:78ch;font-size:15.5px;line-height:1.9">剧本和音乐我们自己能写，demo 我们自己能做。但要把它从稿子变成舞台上的戏，从首演到后面能走到省里、走到国家艺术基金的申报舞台上，需要学校这边给一些实际支持。列出来，看看哪些能给、哪些暂时有困难。</p>
+
+  <div class="block rv">
+    <div class="block-h">一 · 场地与硬件</div>
+    <p><b style="color:var(--ink)">日常排练场地</b>——一部歌剧排下来，从围读、分场排、联排到合成，至少需要三个月到半年的稳定排练空间。需要一间足够大的排练厅（能放下合唱队+乐队+舞景模型），旁边配琴房和声乐小教室，方便独唱演员单独抠细节。</p>
+    <p><b style="color:var(--ink)">首演剧场</b>——首演至少需要一个 500-800 座的剧场，带基本灯光吊杆、乐池或侧台乐队位。不用很大，但要能完成完整合成。</p>
+    <p><b style="color:var(--ink)">办公与创作空间</b>——编剧、作曲、声乐指导需要固定的地方开会、对谱、走流程。具体怎么安排，看学校条件。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">二 · 学生与师资</div>
+    <p><b style="color:var(--ink)">学生演员与合唱队</b>——三部剧都需要学生参与合唱、群众角色、乐队队员。希望参与排演的学生能算思政课实践学分——排演过程本身就是最好的思政课，不是额外加的负担。学生边排边学，比坐在教室里听党课记得牢。</p>
+    <p><b style="color:var(--ink)">校内师资配合</b>——声乐老师带独唱、钢琴老师带合唱、舞蹈老师带形体，这些我们可以自己协调，但希望学校在工作量认定上能支持——排演占老师大量时间，不能全算在义务劳动里。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">三 · 实践教学与研学</div>
+    <p><b style="color:var(--ink)">红色研学基地对接</b>——每部剧都对应真实红色地标（查尼皮、皎平渡、西南联大旧址）。希望学校能把这些地方纳入实践教学基地，排演期间带学生去实地看一次、站一站、想一想——比对着剧本讲十遍都管用。</p>
+    <p><b style="color:var(--ink)">思政课配套</b>——剧排出来之后，不只是演完就完了。希望能配套做成思政课教学案例，让后面每届学生都能通过这部剧了解这段历史。</p>
+  </div>
+
+  <div class="block rv">
+    <div class="block-h">四 · 立项与经费配套</div>
+    <p><b style="color:var(--ink)">校级立项</b>——希望学校先给一个校级立项名分，不管钱多钱少，有了名分后面申报省级、国家级基金才有依托。</p>
+    <p><b style="color:var(--ink)">启动经费</b>——前期剧本打磨、乐谱制作、小样录制、服装道具初版，需要一笔启动经费。不用多，够把第一步走起来就行。</p>
+    <p><b style="color:var(--ink)">后续申报支持</b>——后面申报国家艺术基金、省文艺精品项目，希望学校在申报材料盖章、团队署名、单位资质上给支持。</p>
+  </div>
+
+  <div class="block rv" style="border-left:3px solid var(--accent);padding-left:20px">
+    <div class="block-h" style="color:var(--accent)">总结</div>
+    <p>上面列的这些，核心就是场地、学生、名分三样。如果这部剧落地贵校，这些基本的支持能不能给得到？只要有了这些，剧本和音乐我们自己往前推。后面申报基金、找演出团队、做市场推广，都有学校这个平台撑着。</p>
+  </div>
+</section>
+
+<!-- 下一步 -->
+<section class="section" id="next" style="background:var(--bg-2)">
+  <div class="sec-kicker">NEXT STEPS</div>
+  <h2 class="sec-title">定了方向，接下来怎么走</h2>
+  <hr class="sec-rule">
+  <div class="block rv" style="max-width:72ch;margin-top:40px">
+    <p>今天如果定了方向，接下来从剧本到舞台，大致会经过这几步：剧本定稿 → 立项申报 → 排练合成 → 首演。</p>
+    <p>但有两件事得赶在最前面：<b style="color:var(--ink)">第一，做这件事的主要执行团队要尽快定下来</b>——谁来当导演、谁来当指挥、舞美谁负责，这些人不定，后面所有事都推不动。<b style="color:var(--ink)">第二，可以参演的同学，他们的声音和形象条件要尽快过一遍。</b>学生的声部、音色、形象气质，直接决定我们怎么写曲子、怎么塑造人物。声音和形象具象化了，音乐和剧本才能真正定稿——不然都是纸上谈兵。</p>
+    <p>所以第一步，可能需要学校帮忙：一方面推荐合适的老师和团队成员，另一方面安排一批学生试唱面试，让我们先听一听、看一看。</p>
+    <p>每一步具体怎么排时间、哪些节点由学校主导、哪些节点由我们团队推进，希望听听各位老师的意见——毕竟学校这边的节奏和审批流程，我们不熟悉，也需要学校来定。</p>
+    <p style="color:var(--muted);font-size:15px;margin-top:24px">今天就先汇报到这里。后面怎么推进，等各位老师指导。</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div style="font-size:20px;font-weight:900;letter-spacing:.2em">三部红色歌剧 · 项目比选</div>
+  <div style="font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:var(--gold);margin-top:8px">2026.11.5 · 内部讨论稿 · 未定稿</div>
+  <div class="foot-note">
+    项目总负责人（暂定）：马迪 · 方贤君｜编剧 / 音乐：白耀洲 · 彭侠颖 · 孙子岚｜声乐指导：马迪 · 方贤君 · 孙子岚<br>
+    联系人：白耀洲 17787288800 ｜ 彭侠颖 19898167821 ｜ 孙子岚 18183841993<br>
+    历史照片来源：昆明市档案馆藏 1935 年金沙江皎平渡口；新华社藏闻一多先生肖像；民盟云南省委藏云南大学至公堂今貌。<br>
+    音乐试听素材：《灯下的约定》《火塘恋》《等你回来》《渡江》《远方的国》《归舟》均为剧组原创 demo，仅作内部比选用。<br>
+    人物与剧情按各剧剧本初稿呈现，均为内部讨论稿，未定稿。
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var els = document.querySelectorAll(".rv");
+  if(reduce || !("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("on")});return}
+  var io = new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("on");io.unobserve(en.target)}})},{threshold:.1,rootMargin:"0px 0px -5% 0px"});
+  els.forEach(function(e){io.observe(e)});
+  var links = document.querySelectorAll(".nav a");
+  var secs = ["team","trio","matrix","show-1","show-2","show-3","apply"].map(function(id){return document.getElementById(id)});
+  var sIO = new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+en.target.id)})}})},{rootMargin:"-35% 0px -55% 0px"});
+  secs.forEach(function(s){if(s)sIO.observe(s)});
+
+  // 同时只允许一个音频播放
+  var audios = document.querySelectorAll("audio");
+  audios.forEach(function(a){
+    a.addEventListener("play", function(){
+      audios.forEach(function(b){ if(b!==a) b.pause(); });
+    });
+  });
+})();
+</script>
+</body>
+</html>
