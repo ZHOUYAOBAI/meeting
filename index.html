@@ -173,6 +173,7 @@ main{position:relative;z-index:1}
 .audio-head audio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px}
 .pl{display:flex;flex-wrap:wrap;align-items:center;gap:14px;flex:0 0 100%;width:100%;margin-top:10px}
 .pl-btn{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;
   background:rgba(201,163,92,.12);color:var(--gold);font-size:14px;line-height:1;
   cursor:pointer;display:flex;align-items:center;justify-content:center;
   transition:background .18s,transform .12s}
@@ -1058,6 +1059,19 @@ main{position:relative;z-index:1}
       head.appendChild(box);
     }
 
+    var localTimer = null;
+    function armLocalFallback(){
+      clearTimeout(localTimer);
+      localTimer = setTimeout(function(){
+        if (player.readyState === 0 && player.src && player.src.indexOf("jsdelivr") >= 0){
+          triedLocal = true;
+          player.src = localSrc;
+          try { player.load(); } catch(e){}
+          if (!player.paused) attempt();
+        }
+      }, 3000);
+    }
+
     function armWatchdog(){
       clearTimeout(watchdog);
       watchdog = setTimeout(function(){
@@ -1127,6 +1141,7 @@ main{position:relative;z-index:1}
       if (player.paused || player.ended){
         btn.classList.add("loading");
         armWatchdog();
+        armLocalFallback();
         attempt();
       } else {
         player.pause();
@@ -1138,12 +1153,12 @@ main{position:relative;z-index:1}
       toggle();
     }
 
-    btn.addEventListener("click", safeToggle);
-    btn.addEventListener("touchend", function(e){
-      if (Date.now() - (btn._t || 0) < 400) return;
-      btn._t = Date.now();
-      safeToggle(e);
-    }, {passive:false});
+    /* 只用 click：iOS 上若在 touchend 里阻止默认行为，系统不会把它算作有效手势，
+       播放会被静默拒绝。click 在所有移动浏览器里都稳定算作用户激活。 */
+    btn.addEventListener("click", function(e){
+      e.preventDefault();
+      toggle();
+    });
 
     player.addEventListener("loadedmetadata", function(){ render(); renderBuf(); });
     player.addEventListener("durationchange", render);
@@ -1155,7 +1170,7 @@ main{position:relative;z-index:1}
       current = player; syncBtn(); btn.classList.add("loading"); renderBuf();
     });
     player.addEventListener("playing", function(){
-      disarmWatchdog();
+      disarmWatchdog(); clearTimeout(localTimer);
       btn.classList.remove("loading"); syncBtn(); renderBuf(); render();
     });
     player.addEventListener("pause", syncBtn);

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>音频播放 · 自检</title>
+<style>
+  body{margin:0;padding:20px 16px 60px;background:#0B2B25;color:#EDE6D3;
+       font-family:-apple-system,"PingFang SC",sans-serif;font-size:15px;line-height:1.7}
+  h1{font-size:18px;font-weight:600;margin:0 0 6px}
+  .hint{color:#A9B4A2;font-size:13px;margin-bottom:22px}
+  .box{border:1px solid rgba(201,163,92,.28);background:#143B32;padding:16px;margin-bottom:16px}
+  .name{font-size:15px;margin-bottom:10px}
+  .tag{font-size:11px;color:#C9A35C;letter-spacing:.08em;margin-bottom:8px;display:block}
+  audio{width:100%;display:block;margin-top:10px}
+  .st{font-size:12px;color:#7C8B7E;margin-top:8px}
+</style>
+</head>
+<body>
+<h1>音频播放自检</h1>
+<p class="hint">每组两条：先试「CDN 线路」，再试「直连线路」。哪个能出声，就说明那条线路可用。<br>请把结果告诉我（哪组能放、哪组不能放）。</p>
+
+<div id="list"></div>
+
+<script>
+var FILES = [
+  ["灯下的约定","wenyiduo-site/assets/audio/dengxiadeyueding.web.mp3"],
+  ["火塘恋","wenyiduo-site/assets/audio/huotanglian.web.mp3"],
+  ["《薪火》","wenyiduo-site/assets/audio/xinhuo.web.mp3"]
+];
+var CDN = "https://cdn.jsdelivr.net/gh/ZHOUYAOBAI/meeting@main/";
+var list = document.getElementById("list");
+
+FILES.forEach(function(f){
+  var name = f[0], path = f[1];
+
+  [["CDN 线路", CDN + path], ["直连线路", path]].forEach(function(v){
+    var label = v[0], url = v[1];
+    var box = document.createElement("div");
+    box.className = "box";
+
+    var t = document.createElement("span");
+    t.className = "tag";
+    t.textContent = label;
+
+    var n = document.createElement("div");
+    n.className = "name";
+    n.textContent = name;
+
+    var a = document.createElement("audio");
+    a.controls = true;
+    a.preload = "none";
+    a.playsInline = true;
+    a.src = url;
+
+    var st = document.createElement("div");
+    st.className = "st";
+    st.textContent = "未开始";
+
+    a.addEventListener("loadedmetadata", function(){ st.textContent = "已读取，时长 " + Math.round(a.duration) + " 秒"; });
+    a.addEventListener("playing", function(){ st.textContent = "正在播放"; });
+    a.addEventListener("waiting", function(){ st.textContent = "缓冲中…"; });
+    a.addEventListener("error", function(){ st.textContent = "加载失败（错误码 " + (a.error ? a.error.code : "?") + "）"; });
+
+    box.appendChild(t); box.appendChild(n); box.appendChild(a); box.appendChild(st);
+    list.appendChild(box);
+  });
+});
+</script>
+</body>
+</html>
