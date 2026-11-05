@@ -1023,7 +1023,11 @@ main{position:relative;z-index:1}
        移动端浏览器对「隐藏媒体元素」的播放限制也就绕过去了。 */
     var player = new Audio();
     player.preload = "none";
-    player.src = src;
+    /* 音频走 CDN 加速（GitHub 直连在国内很慢），失败自动回退原地址 */
+    var localSrc = src;
+    var cdnSrc = "https://cdn.jsdelivr.net/gh/ZHOUYAOBAI/meeting@main/" + src;
+    var triedLocal = false;
+    player.src = cdnSrc;
     head._player = player;
 
     var btn   = ui.querySelector(".pl-btn");
@@ -1165,6 +1169,13 @@ main{position:relative;z-index:1}
       }
     });
     player.addEventListener("error", function(){
+      if (!triedLocal && player.src && player.src.indexOf("jsdelivr") >= 0){
+        triedLocal = true;
+        player.src = localSrc;
+        try { player.load(); } catch(e){}
+        if (!player.paused) attempt();
+        return;
+      }
       disarmWatchdog();
       btn.classList.remove("loading");
       durT.textContent = "加载失败";
