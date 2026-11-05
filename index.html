@@ -168,8 +168,23 @@ main{position:relative;z-index:1}
 }
 
 /* ── 自建音频播放器（带缓冲进度）────────────── */
-.audio-head audio{display:none}
-.pl{display:flex;align-items:center;gap:14px;flex:0 0 100%;width:100%;margin-top:10px}
+@media(max-width:640px){
+  .audio-head{padding:14px 15px 16px;gap:5px 10px}
+  .audio-head .song{font-size:16px}
+  .audio-head .credit{flex:1 1 100%;order:9;font-size:11px;line-height:1.6}
+  .pl{gap:9px;margin-top:8px}
+  .pl-btn{width:46px;height:46px;border-radius:50%}
+  .pl-btn svg{width:16px;height:16px}
+  .pl-track{height:30px;min-width:0}
+  .pl-track::before{height:5px;border-radius:3px}
+  .pl-buf,.pl-fill{height:5px;border-radius:3px}
+  .pl-knob{width:15px;height:15px;margin-left:-7.5px}
+  .pl-time{min-width:0;font-size:10.5px}
+  .audio-lyrics{padding:16px 16px;font-size:14px;line-height:1.95}
+}
+
+.audio-head audio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px}
+.pl{display:flex;flex-wrap:wrap;align-items:center;gap:14px;flex:0 0 100%;width:100%;margin-top:10px}
 .pl-btn{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);
   background:rgba(201,163,92,.12);color:var(--gold);font-size:14px;line-height:1;
   cursor:pointer;display:flex;align-items:center;justify-content:center;
@@ -362,6 +377,13 @@ main{position:relative;z-index:1}
       <div class="song">灯下的约定</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
       <audio preload="metadata" src="wenyiduo-site/assets/audio/dengxiadeyueding.web.mp3"></audio>
+      <div class="pl">
+        <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
+        <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>
+        </div>
+        <div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>
+      </div>
     </div>
     <div class="audio-lyrics">马灯的光落在纸页上
 字里行间是今天的分量
@@ -453,6 +475,13 @@ main{position:relative;z-index:1}
       <div class="song">火塘恋</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
       <audio preload="metadata" src="wenyiduo-site/assets/audio/huotanglian.web.mp3"></audio>
+      <div class="pl">
+        <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
+        <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>
+        </div>
+        <div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>
+      </div>
     </div>
     <div class="audio-lyrics">火塘里的火烧得旺，阿妹坐在我身旁。
 不敢看，不敢想，怕看久了心发慌。
@@ -470,6 +499,13 @@ main{position:relative;z-index:1}
       <div class="song">等你回来</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
       <audio preload="metadata" src="wenyiduo-site/assets/audio/dengnihuilai.web.mp3"></audio>
+      <div class="pl">
+        <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
+        <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>
+        </div>
+        <div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>
+      </div>
     </div>
     <div class="audio-lyrics">火塘的火还在燃，你握紧我的手腕。
 半块坨坨肉入喉暖，你笑着说这般最是心安。
@@ -493,6 +529,13 @@ main{position:relative;z-index:1}
       <div class="song">渡江</div>
       <div class="credit">曲：彭侠颖 白耀洲 · 纯音乐段落</div>
       <audio preload="metadata" src="wenyiduo-site/assets/audio/dujiang.web.mp3"></audio>
+      <div class="pl">
+        <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
+        <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>
+        </div>
+        <div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>
+      </div>
     </div>
     <div class="audio-lyrics" style="font-style:normal;color:var(--faint);font-family:var(--serif);font-size:13px;letter-spacing:.05em">纯音乐段落 · 第四幕渡江场景配乐 · 无演唱词</div>
   </div>
@@ -503,6 +546,13 @@ main{position:relative;z-index:1}
       <div class="song">山河记得</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
       <audio preload="metadata" src="wenyiduo-site/assets/audio/shanhe-weiqu.web.mp3"></audio>
+      <div class="pl">
+        <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
+        <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>
+        </div>
+        <div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>
+      </div>
     </div>
     <div class="audio-lyrics">原来胜利从不是热血一腔
 同心才熬过黑暗的漫长
@@ -628,6 +678,13 @@ main{position:relative;z-index:1}
       <div class="song">远方的国</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
       <audio preload="metadata" src="wenyiduo-site/assets/audio/yuanfangdeguo.web.mp3"></audio>
+      <div class="pl">
+        <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
+        <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>
+        </div>
+        <div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>
+      </div>
     </div>
     <div class="audio-lyrics">隔着大洋与风雪，
 我听见黄河在夜半呜咽。
@@ -656,6 +713,13 @@ main{position:relative;z-index:1}
       <div class="song">归舟</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
       <audio preload="metadata" src="wenyiduo-site/assets/audio/guizhou.web.mp3"></audio>
+      <div class="pl">
+        <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
+        <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>
+        </div>
+        <div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>
+      </div>
     </div>
     <div class="audio-lyrics">太平洋的浪，涌向东方，
 船头朝东，对着故乡。
@@ -698,6 +762,13 @@ main{position:relative;z-index:1}
       <div class="song">薪火</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
       <audio preload="metadata" src="wenyiduo-site/assets/audio/xinhuo.web.mp3"></audio>
+      <div class="pl">
+        <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
+        <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>
+        </div>
+        <div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>
+      </div>
     </div>
     <div class="audio-lyrics">接过你的笔，接过你的光，
 红烛的灰，落在我们手掌。
@@ -907,38 +978,31 @@ main{position:relative;z-index:1}
   secs.forEach(function(s){if(s)sIO.observe(s)});
 
   // ── 自建播放器：缓冲可视化 + 单音源互斥 + 拖拽 ──
-  var audios = document.querySelectorAll(".audio-head audio");
   var playing = null;
-
-  var ICON_PLAY = '<svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>';
+  var ICON_PLAY = '<svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg>';
   var ICON_PAUSE = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
 
   function fmt(sec){
     if (!isFinite(sec) || sec < 0) sec = 0;
     var m = Math.floor(sec / 60);
     var s = Math.floor(sec % 60);
-    return m + ":" + String(s).padStart(2, "0");
+    return m + ":" + (s < 10 ? "0" : "") + s;
   }
 
-  audios.forEach(function(a){
-    // 建界面
-    var ui = document.createElement("div");
-    ui.className = "pl";
-    ui.innerHTML =
-      '<button class="pl-btn" type="button" aria-label="播放">' + ICON_PLAY + '</button>' +
-      '<div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
-        '<div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>' +
-      '</div>' +
-      '<div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>';
-    a.parentNode.appendChild(ui);
+  var heads = document.querySelectorAll(".audio-head");
 
-    var btn  = ui.querySelector(".pl-btn");
-    var trk  = ui.querySelector(".pl-track");
-    var buf  = ui.querySelector(".pl-buf");
-    var fill = ui.querySelector(".pl-fill");
-    var knob = ui.querySelector(".pl-knob");
-    var curT = ui.querySelector(".pl-cur");
-    var durT = ui.querySelector(".pl-dur");
+  Array.prototype.forEach.call(heads, function(head){
+    var a   = head.querySelector("audio");
+    var ui  = head.querySelector(".pl");
+    if (!a || !ui) return;
+
+    var btn   = ui.querySelector(".pl-btn");
+    var trk   = ui.querySelector(".pl-track");
+    var buf   = ui.querySelector(".pl-buf");
+    var fill  = ui.querySelector(".pl-fill");
+    var knob  = ui.querySelector(".pl-knob");
+    var curT  = ui.querySelector(".pl-cur");
+    var durT  = ui.querySelector(".pl-dur");
     var timeBox = ui.querySelector(".pl-time");
 
     var dragging = false, wasPlaying = false;
@@ -959,16 +1023,14 @@ main{position:relative;z-index:1}
     }
 
     function renderBuf(){
-      if (a.buffered.length && isFinite(a.duration) && a.duration > 0){
-        var end = a.buffered.end(a.buffered.length - 1);
-        // 起点可能不在 0，取覆盖到当前位置那段的末端
-        for (var i = 0; i < a.buffered.length; i++){
-          if (a.buffered.start(i) <= a.currentTime && a.buffered.end(i) >= a.currentTime){
-            end = a.buffered.end(i); break;
-          }
+      if (!a.buffered || !a.buffered.length || !isFinite(a.duration) || a.duration <= 0) return;
+      var end = a.buffered.end(a.buffered.length - 1);
+      for (var i = 0; i < a.buffered.length; i++){
+        if (a.buffered.start(i) <= (a.currentTime || 0) && a.buffered.end(i) >= (a.currentTime || 0)){
+          end = a.buffered.end(i); break;
         }
-        buf.style.width = ((end / a.duration) * 100).toFixed(2) + "%";
       }
+      buf.style.width = ((end / a.duration) * 100).toFixed(2) + "%";
     }
 
     function syncBtn(){
@@ -977,32 +1039,43 @@ main{position:relative;z-index:1}
       btn.setAttribute("aria-label", isPlaying ? "暂停" : "播放");
     }
 
-    btn.addEventListener("click", function(){
-      if (playing && playing !== a) { playing.pause(); }
+    function toggle(){
+      if (playing && playing !== a) { try { playing.pause(); } catch(e){} }
       if (a.paused){
-        // 没加载过就现在开始拉，立刻进入"缓冲中"状态
-        if (a.readyState === 0) a.load();
+        if (a.readyState === 0) { try { a.load(); } catch(e){} }
         var pr = a.play();
-        if (pr && pr.catch) pr.catch(function(){});
+        if (pr && pr.catch) pr.catch(function(){ btn.classList.remove("loading"); });
       } else {
         a.pause();
       }
+    }
+
+    // 桌面 click + 移动端 click（touch 也会产生 click），统一走这里
+    btn.addEventListener("click", function(e){
+      e.preventDefault();
+      if (Date.now() - (btn._lastTap || 0) < 400) return;
+      toggle();
     });
+    btn.addEventListener("touchend", function(e){
+      // 部分安卓 webview 里 touchend 不补发 click，这里兜底但避免重复触发
+      if (Date.now() - (btn._lastTap || 0) < 400) return;
+      btn._lastTap = Date.now();
+      e.preventDefault();
+      toggle();
+    }, {passive: false});
 
     a.addEventListener("loadedmetadata", function(){ render(); renderBuf(); });
     a.addEventListener("durationchange", render);
     a.addEventListener("timeupdate", function(){ render(); renderBuf(); });
     a.addEventListener("progress", renderBuf);
     a.addEventListener("seeking", render);
-    a.addEventListener("play", function(){
-      playing = a; syncBtn(); renderBuf();
-    });
+    a.addEventListener("play", function(){ playing = a; syncBtn(); renderBuf(); });
     a.addEventListener("playing", function(){ btn.classList.remove("loading"); syncBtn(); renderBuf(); });
     a.addEventListener("pause", function(){ syncBtn(); });
     a.addEventListener("ended", function(){ playing = null; syncBtn(); render(); });
     a.addEventListener("waiting", function(){ btn.classList.add("loading"); });
     a.addEventListener("canplay", function(){ btn.classList.remove("loading"); });
-    a.addEventListener("error", function(){ btn.classList.remove("loading"); });
+    a.addEventListener("error", function(){ btn.classList.remove("loading"); durT.textContent = "加载失败"; });
 
     function seekTo(clientX){
       var r = trk.getBoundingClientRect();
@@ -1013,28 +1086,45 @@ main{position:relative;z-index:1}
       }
     }
 
-    trk.addEventListener("pointerdown", function(e){
-      dragging = true;
-      wasPlaying = !a.paused;
-      if (wasPlaying) a.pause();
-      trk.setPointerCapture(e.pointerId);
-      seekTo(e.clientX);
-    });
-    trk.addEventListener("pointermove", function(e){ if (dragging) seekTo(e.clientX); });
-    trk.addEventListener("pointerup", function(e){
-      if (!dragging) return;
-      dragging = false;
-      try { trk.releasePointerCapture(e.pointerId); } catch(err){}
-      if (wasPlaying) a.play().catch(function(){});
-    });
-    trk.addEventListener("pointercancel", function(){ dragging = false; });
+    function seekFromEvent(e){
+      var x = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+      seekTo(x);
+    }
+
+    if (window.PointerEvent){
+      trk.addEventListener("pointerdown", function(e){
+        dragging = true;
+        wasPlaying = !a.paused;
+        if (wasPlaying) a.pause();
+        try { trk.setPointerCapture(e.pointerId); } catch(err){}
+        seekTo(e.clientX);
+      });
+      trk.addEventListener("pointermove", function(e){ if (dragging) seekTo(e.clientX); });
+      trk.addEventListener("pointerup", function(e){
+        if (!dragging) return;
+        dragging = false;
+        try { trk.releasePointerCapture(e.pointerId); } catch(err){}
+        if (wasPlaying) a.play().catch(function(){});
+      });
+      trk.addEventListener("pointercancel", function(){ dragging = false; });
+    } else {
+      trk.addEventListener("touchstart", function(e){ dragging = true; wasPlaying = !a.paused; if (wasPlaying) a.pause(); seekFromEvent(e); }, {passive:true});
+      trk.addEventListener("touchmove", function(e){ if (dragging) seekFromEvent(e); }, {passive:true});
+      trk.addEventListener("touchend", function(){ if (!dragging) return; dragging = false; if (wasPlaying) a.play().catch(function(){}); });
+      trk.addEventListener("mousedown", function(e){ dragging = true; seekFromEvent(e); });
+      trk.addEventListener("mousemove", function(e){ if (dragging) seekFromEvent(e); });
+      trk.addEventListener("mouseup", function(){ dragging = false; });
+    }
 
     trk.addEventListener("keydown", function(e){
       var step = 5;
       if (e.key === "ArrowRight"){ a.currentTime = Math.min(a.duration || 0, a.currentTime + step); e.preventDefault(); }
       else if (e.key === "ArrowLeft"){ a.currentTime = Math.max(0, a.currentTime - step); e.preventDefault(); }
-      else if (e.key === " " || e.key === "Enter"){ btn.click(); e.preventDefault(); }
+      else if (e.key === " " || e.key === "Enter"){ toggle(); e.preventDefault(); }
     });
+
+    // 首次渲染（已缓存或已预载的情况）
+    render(); renderBuf();
   });
 })();
 </script>
