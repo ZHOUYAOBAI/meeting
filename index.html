@@ -168,20 +168,7 @@ main{position:relative;z-index:1}
 }
 
 /* ── 自建音频播放器（带缓冲进度）────────────── */
-@media(max-width:640px){
-  .audio-head{padding:14px 15px 16px;gap:5px 10px}
-  .audio-head .song{font-size:16px}
-  .audio-head .credit{flex:1 1 100%;order:9;font-size:11px;line-height:1.6}
-  .pl{gap:9px;margin-top:8px}
-  .pl-btn{width:46px;height:46px;border-radius:50%}
-  .pl-btn svg{width:16px;height:16px}
-  .pl-track{height:30px;min-width:0}
-  .pl-track::before{height:5px;border-radius:3px}
-  .pl-buf,.pl-fill{height:5px;border-radius:3px}
-  .pl-knob{width:15px;height:15px;margin-left:-7.5px}
-  .pl-time{min-width:0;font-size:10.5px}
-  .audio-lyrics{padding:16px 16px;font-size:14px;line-height:1.95}
-}
+
 
 .audio-head audio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px}
 .pl{display:flex;flex-wrap:wrap;align-items:center;gap:14px;flex:0 0 100%;width:100%;margin-top:10px}
@@ -212,6 +199,23 @@ main{position:relative;z-index:1}
 .pl-time{flex:0 0 auto;font-family:var(--serif);font-size:11.5px;color:var(--faint);
   letter-spacing:.04em;font-variant-numeric:tabular-nums;min-width:78px;text-align:right}
 .pl-time.on{color:var(--muted)}
+@media(max-width:640px){
+  .audio-head{padding:14px 15px 16px;gap:5px 10px}
+  .audio-head .song{font-size:16px}
+  .audio-head .credit{flex:1 1 100%;order:9;font-size:11px;line-height:1.6}
+  .pl{gap:9px;margin-top:8px}
+  .pl-btn{width:46px;height:46px;border-radius:50%}
+  .pl-btn svg{width:16px;height:16px}
+  .pl-track{height:30px;min-width:0}
+  .pl-track::before{height:5px;border-radius:3px}
+  .pl-buf,.pl-fill{height:5px;border-radius:3px}
+  .pl-knob{width:15px;height:15px;margin-left:-7.5px}
+  .pl-time{min-width:0;font-size:10.5px}
+  .audio-lyrics{padding:16px 16px;font-size:14px;line-height:1.95}
+}
+.pl-fb{margin-top:10px;width:100%}
+.pl-fb-t{font-size:11.5px;color:var(--faint);letter-spacing:.04em;margin-bottom:7px;line-height:1.6}
+.pl-fb audio{width:100%;height:36px;display:block}
 </style>
 </head>
 <body>
@@ -1031,7 +1035,35 @@ main{position:relative;z-index:1}
     var durT  = ui.querySelector(".pl-dur");
     var timeBox = ui.querySelector(".pl-time");
 
-    var dragging = false, wasPlaying = false, pendingPlay = false;
+    var dragging = false, wasPlaying = false, pendingPlay = false, watchdog = null;
+
+    /* 硬兜底：自建播放器若启动失败，直接把系统播放器亮出来，保证一定能听 */
+    function showFallback(reason){
+      if (ui.querySelector(".pl-fb") || !src) return;
+      var box = document.createElement("div");
+      box.className = "pl-fb";
+      var tip = document.createElement("div");
+      tip.className = "pl-fb-t";
+      tip.textContent = "网络较慢或播放未启动（" + reason + "），可直接用系统播放器试听：";
+      var raw = document.createElement("audio");
+      raw.controls = true;
+      raw.preload = "none";
+      raw.src = src;
+      box.appendChild(tip);
+      box.appendChild(raw);
+      head.appendChild(box);
+    }
+
+    function armWatchdog(){
+      clearTimeout(watchdog);
+      watchdog = setTimeout(function(){
+        if (player.paused || player.readyState === 0){
+          btn.classList.remove("loading");
+          showFallback(player.readyState === 0 ? "音频尚未加载" : "点击未响应");
+        }
+      }, 6000);
+    }
+    function disarmWatchdog(){ clearTimeout(watchdog); watchdog = null; }
 
     function render(){
       var d = player.duration;
@@ -1074,7 +1106,8 @@ main{position:relative;z-index:1}
       if (pr && pr.catch) pr.catch(function(err){
         var name = err && err.name;
         if (name === "NotAllowedError"){
-          pendingPlay = true;          // 需要再要点一下
+          pendingPlay = true;
+          showFallback("浏览器拦截了自动播放");
         } else if (name === "AbortError"){
           // 被新的播放请求打断，忽略
         } else {
@@ -1089,6 +1122,7 @@ main{position:relative;z-index:1}
       if (current && current !== player) { try { current.pause(); } catch(e){} }
       if (player.paused || player.ended){
         btn.classList.add("loading");
+        armWatchdog();
         attempt();
       } else {
         player.pause();
@@ -1117,6 +1151,7 @@ main{position:relative;z-index:1}
       current = player; syncBtn(); btn.classList.add("loading"); renderBuf();
     });
     player.addEventListener("playing", function(){
+      disarmWatchdog();
       btn.classList.remove("loading"); syncBtn(); renderBuf(); render();
     });
     player.addEventListener("pause", syncBtn);
@@ -1130,8 +1165,10 @@ main{position:relative;z-index:1}
       }
     });
     player.addEventListener("error", function(){
+      disarmWatchdog();
       btn.classList.remove("loading");
       durT.textContent = "加载失败";
+      showFallback("资源读取失败");
     });
 
     function seekTo(clientX){
