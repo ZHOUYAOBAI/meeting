@@ -166,6 +166,33 @@ main{position:relative;z-index:1}
   *,*::before,*::after{transition-duration:.001s!important;animation-duration:.001s!important}
   .rv{opacity:1;transform:none}
 }
+
+/* ── 自建音频播放器（带缓冲进度）────────────── */
+.audio-head audio{display:none}
+.pl{display:flex;align-items:center;gap:14px;flex:0 0 100%;width:100%;margin-top:10px}
+.pl-btn{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);
+  background:rgba(201,163,92,.12);color:var(--gold);font-size:14px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .18s,transform .12s}
+.pl-btn:hover{background:rgba(201,163,92,.24)}
+.pl-btn:active{transform:scale(.94)}
+.pl-btn.loading{border-color:var(--faint);color:var(--faint);cursor:wait}
+.pl-btn svg{width:14px;height:14px;fill:currentColor}
+.pl-track{position:relative;flex:1 1 auto;height:20px;display:flex;align-items:center;
+  cursor:pointer;touch-action:none;outline:none}
+.pl-track::before{content:"";position:absolute;left:0;right:0;height:4px;border-radius:2px;
+  background:rgba(237,230,211,.14)}
+.pl-buf{position:absolute;left:0;height:4px;border-radius:2px;
+  background:rgba(237,230,211,.34);width:0;transition:width .25s linear}
+.pl-fill{position:absolute;left:0;height:4px;border-radius:2px;
+  background:linear-gradient(90deg,var(--gold),#E0C285);width:0}
+.pl-knob{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,163,92,.18);left:0;margin-left:-5.5px;pointer-events:none;
+  transition:transform .12s}
+.pl-track:hover .pl-knob,.pl-track:focus-visible .pl-knob{transform:scale(1.25)}
+.pl-time{flex:0 0 auto;font-family:var(--serif);font-size:11.5px;color:var(--faint);
+  letter-spacing:.04em;font-variant-numeric:tabular-nums;min-width:78px;text-align:right}
+.pl-time.on{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -334,7 +361,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">灯下的约定</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio controls preload="none" src="wenyiduo-site/assets/audio/dengxiadeyueding.mp3"></audio>
+      <audio preload="metadata" src="wenyiduo-site/assets/audio/dengxiadeyueding.web.mp3"></audio>
     </div>
     <div class="audio-lyrics">马灯的光落在纸页上
 字里行间是今天的分量
@@ -425,7 +452,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">火塘恋</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio controls preload="none" src="wenyiduo-site/assets/audio/huotanglian.mp3"></audio>
+      <audio preload="metadata" src="wenyiduo-site/assets/audio/huotanglian.web.mp3"></audio>
     </div>
     <div class="audio-lyrics">火塘里的火烧得旺，阿妹坐在我身旁。
 不敢看，不敢想，怕看久了心发慌。
@@ -442,7 +469,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">等你回来</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio controls preload="none" src="wenyiduo-site/assets/audio/dengnihuilai.mp3"></audio>
+      <audio preload="metadata" src="wenyiduo-site/assets/audio/dengnihuilai.web.mp3"></audio>
     </div>
     <div class="audio-lyrics">火塘的火还在燃，你握紧我的手腕。
 半块坨坨肉入喉暖，你笑着说这般最是心安。
@@ -465,7 +492,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">渡江</div>
       <div class="credit">曲：彭侠颖 白耀洲 · 纯音乐段落</div>
-      <audio controls preload="none" src="wenyiduo-site/assets/audio/dujiang.mp3"></audio>
+      <audio preload="metadata" src="wenyiduo-site/assets/audio/dujiang.web.mp3"></audio>
     </div>
     <div class="audio-lyrics" style="font-style:normal;color:var(--faint);font-family:var(--serif);font-size:13px;letter-spacing:.05em">纯音乐段落 · 第四幕渡江场景配乐 · 无演唱词</div>
   </div>
@@ -475,7 +502,7 @@ main{position:relative;z-index:1}
       <div class="label">尾曲</div>
       <div class="song">山河记得</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio controls preload="none" src="wenyiduo-site/assets/audio/shanhe-weiqu.mp3"></audio>
+      <audio preload="metadata" src="wenyiduo-site/assets/audio/shanhe-weiqu.web.mp3"></audio>
     </div>
     <div class="audio-lyrics">原来胜利从不是热血一腔
 同心才熬过黑暗的漫长
@@ -600,7 +627,7 @@ main{position:relative;z-index:1}
       <div class="label">A7 咏叹调</div>
       <div class="song">远方的国</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio controls preload="none" src="wenyiduo-site/assets/audio/yuanfangdeguo.mp3"></audio>
+      <audio preload="metadata" src="wenyiduo-site/assets/audio/yuanfangdeguo.web.mp3"></audio>
     </div>
     <div class="audio-lyrics">隔着大洋与风雪，
 我听见黄河在夜半呜咽。
@@ -628,7 +655,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">归舟</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio controls preload="none" src="wenyiduo-site/assets/audio/guizhou.mp3"></audio>
+      <audio preload="metadata" src="wenyiduo-site/assets/audio/guizhou.web.mp3"></audio>
     </div>
     <div class="audio-lyrics">太平洋的浪，涌向东方，
 船头朝东，对着故乡。
@@ -670,7 +697,7 @@ main{position:relative;z-index:1}
       <div class="label">E3 尾声咏叹调</div>
       <div class="song">薪火</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio controls preload="none" src="wenyiduo-site/assets/audio/xinhuo.mp3"></audio>
+      <audio preload="metadata" src="wenyiduo-site/assets/audio/xinhuo.web.mp3"></audio>
     </div>
     <div class="audio-lyrics">接过你的笔，接过你的光，
 红烛的灰，落在我们手掌。
@@ -879,11 +906,134 @@ main{position:relative;z-index:1}
   var sIO = new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+en.target.id)})}})},{rootMargin:"-35% 0px -55% 0px"});
   secs.forEach(function(s){if(s)sIO.observe(s)});
 
-  // 同时只允许一个音频播放
-  var audios = document.querySelectorAll("audio");
+  // ── 自建播放器：缓冲可视化 + 单音源互斥 + 拖拽 ──
+  var audios = document.querySelectorAll(".audio-head audio");
+  var playing = null;
+
+  var ICON_PLAY = '<svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>';
+  var ICON_PAUSE = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+
+  function fmt(sec){
+    if (!isFinite(sec) || sec < 0) sec = 0;
+    var m = Math.floor(sec / 60);
+    var s = Math.floor(sec % 60);
+    return m + ":" + String(s).padStart(2, "0");
+  }
+
   audios.forEach(function(a){
+    // 建界面
+    var ui = document.createElement("div");
+    ui.className = "pl";
+    ui.innerHTML =
+      '<button class="pl-btn" type="button" aria-label="播放">' + ICON_PLAY + '</button>' +
+      '<div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
+        '<div class="pl-buf"></div><div class="pl-fill"></div><div class="pl-knob"></div>' +
+      '</div>' +
+      '<div class="pl-time"><span class="pl-cur">0:00</span> / <span class="pl-dur">--:--</span></div>';
+    a.parentNode.appendChild(ui);
+
+    var btn  = ui.querySelector(".pl-btn");
+    var trk  = ui.querySelector(".pl-track");
+    var buf  = ui.querySelector(".pl-buf");
+    var fill = ui.querySelector(".pl-fill");
+    var knob = ui.querySelector(".pl-knob");
+    var curT = ui.querySelector(".pl-cur");
+    var durT = ui.querySelector(".pl-dur");
+    var timeBox = ui.querySelector(".pl-time");
+
+    var dragging = false, wasPlaying = false;
+
+    function render(){
+      var d = a.duration;
+      if (isFinite(d) && d > 0){
+        var p = a.currentTime / d;
+        var pct = (p * 100).toFixed(2) + "%";
+        fill.style.width = pct;
+        knob.style.left = pct;
+        curT.textContent = fmt(a.currentTime);
+        durT.textContent = fmt(d);
+        timeBox.classList.add("on");
+        trk.setAttribute("aria-valuenow", Math.round(p * 100));
+        trk.setAttribute("aria-valuetext", fmt(a.currentTime) + " / " + fmt(d));
+      }
+    }
+
+    function renderBuf(){
+      if (a.buffered.length && isFinite(a.duration) && a.duration > 0){
+        var end = a.buffered.end(a.buffered.length - 1);
+        // 起点可能不在 0，取覆盖到当前位置那段的末端
+        for (var i = 0; i < a.buffered.length; i++){
+          if (a.buffered.start(i) <= a.currentTime && a.buffered.end(i) >= a.currentTime){
+            end = a.buffered.end(i); break;
+          }
+        }
+        buf.style.width = ((end / a.duration) * 100).toFixed(2) + "%";
+      }
+    }
+
+    function syncBtn(){
+      var isPlaying = !a.paused && !a.ended;
+      btn.innerHTML = isPlaying ? ICON_PAUSE : ICON_PLAY;
+      btn.setAttribute("aria-label", isPlaying ? "暂停" : "播放");
+    }
+
+    btn.addEventListener("click", function(){
+      if (playing && playing !== a) { playing.pause(); }
+      if (a.paused){
+        // 没加载过就现在开始拉，立刻进入"缓冲中"状态
+        if (a.readyState === 0) a.load();
+        var pr = a.play();
+        if (pr && pr.catch) pr.catch(function(){});
+      } else {
+        a.pause();
+      }
+    });
+
+    a.addEventListener("loadedmetadata", function(){ render(); renderBuf(); });
+    a.addEventListener("durationchange", render);
+    a.addEventListener("timeupdate", function(){ render(); renderBuf(); });
+    a.addEventListener("progress", renderBuf);
+    a.addEventListener("seeking", render);
     a.addEventListener("play", function(){
-      audios.forEach(function(b){ if(b!==a) b.pause(); });
+      playing = a; syncBtn(); renderBuf();
+    });
+    a.addEventListener("playing", function(){ btn.classList.remove("loading"); syncBtn(); renderBuf(); });
+    a.addEventListener("pause", function(){ syncBtn(); });
+    a.addEventListener("ended", function(){ playing = null; syncBtn(); render(); });
+    a.addEventListener("waiting", function(){ btn.classList.add("loading"); });
+    a.addEventListener("canplay", function(){ btn.classList.remove("loading"); });
+    a.addEventListener("error", function(){ btn.classList.remove("loading"); });
+
+    function seekTo(clientX){
+      var r = trk.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+      if (isFinite(a.duration) && a.duration > 0){
+        a.currentTime = p * a.duration;
+        render();
+      }
+    }
+
+    trk.addEventListener("pointerdown", function(e){
+      dragging = true;
+      wasPlaying = !a.paused;
+      if (wasPlaying) a.pause();
+      trk.setPointerCapture(e.pointerId);
+      seekTo(e.clientX);
+    });
+    trk.addEventListener("pointermove", function(e){ if (dragging) seekTo(e.clientX); });
+    trk.addEventListener("pointerup", function(e){
+      if (!dragging) return;
+      dragging = false;
+      try { trk.releasePointerCapture(e.pointerId); } catch(err){}
+      if (wasPlaying) a.play().catch(function(){});
+    });
+    trk.addEventListener("pointercancel", function(){ dragging = false; });
+
+    trk.addEventListener("keydown", function(e){
+      var step = 5;
+      if (e.key === "ArrowRight"){ a.currentTime = Math.min(a.duration || 0, a.currentTime + step); e.preventDefault(); }
+      else if (e.key === "ArrowLeft"){ a.currentTime = Math.max(0, a.currentTime - step); e.preventDefault(); }
+      else if (e.key === " " || e.key === "Enter"){ btn.click(); e.preventDefault(); }
     });
   });
 })();
