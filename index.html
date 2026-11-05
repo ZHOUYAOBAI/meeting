@@ -191,7 +191,11 @@ main{position:relative;z-index:1}
   transition:background .18s,transform .12s}
 .pl-btn:hover{background:rgba(201,163,92,.24)}
 .pl-btn:active{transform:scale(.94)}
-.pl-btn.loading{border-color:var(--faint);color:var(--faint);cursor:wait}
+.pl-btn.loading{border-color:var(--faint);color:var(--faint);cursor:wait;position:relative}
+.pl-btn.loading svg{opacity:0}
+.pl-btn.loading::after{content:"";position:absolute;width:15px;height:15px;border-radius:50%;
+  border:2px solid rgba(201,163,92,.28);border-top-color:var(--gold);animation:plspin .75s linear infinite}
+@keyframes plspin{to{transform:rotate(360deg)}}
 .pl-btn svg{width:14px;height:14px;fill:currentColor}
 .pl-track{position:relative;flex:1 1 auto;height:20px;display:flex;align-items:center;
   cursor:pointer;touch-action:none;outline:none}
@@ -376,7 +380,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">灯下的约定</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio preload="metadata" src="wenyiduo-site/assets/audio/dengxiadeyueding.web.mp3"></audio>
+      <audio preload="none" src="wenyiduo-site/assets/audio/dengxiadeyueding.web.mp3"></audio>
       <div class="pl">
         <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
         <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -474,7 +478,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">火塘恋</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio preload="metadata" src="wenyiduo-site/assets/audio/huotanglian.web.mp3"></audio>
+      <audio preload="none" src="wenyiduo-site/assets/audio/huotanglian.web.mp3"></audio>
       <div class="pl">
         <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
         <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -498,7 +502,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">等你回来</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio preload="metadata" src="wenyiduo-site/assets/audio/dengnihuilai.web.mp3"></audio>
+      <audio preload="none" src="wenyiduo-site/assets/audio/dengnihuilai.web.mp3"></audio>
       <div class="pl">
         <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
         <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -528,7 +532,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">渡江</div>
       <div class="credit">曲：彭侠颖 白耀洲 · 纯音乐段落</div>
-      <audio preload="metadata" src="wenyiduo-site/assets/audio/dujiang.web.mp3"></audio>
+      <audio preload="none" src="wenyiduo-site/assets/audio/dujiang.web.mp3"></audio>
       <div class="pl">
         <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
         <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -545,7 +549,7 @@ main{position:relative;z-index:1}
       <div class="label">尾曲</div>
       <div class="song">山河记得</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio preload="metadata" src="wenyiduo-site/assets/audio/shanhe-weiqu.web.mp3"></audio>
+      <audio preload="none" src="wenyiduo-site/assets/audio/shanhe-weiqu.web.mp3"></audio>
       <div class="pl">
         <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
         <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -677,7 +681,7 @@ main{position:relative;z-index:1}
       <div class="label">A7 咏叹调</div>
       <div class="song">远方的国</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio preload="metadata" src="wenyiduo-site/assets/audio/yuanfangdeguo.web.mp3"></audio>
+      <audio preload="none" src="wenyiduo-site/assets/audio/yuanfangdeguo.web.mp3"></audio>
       <div class="pl">
         <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
         <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -712,7 +716,7 @@ main{position:relative;z-index:1}
       <div class="label">试听</div>
       <div class="song">归舟</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio preload="metadata" src="wenyiduo-site/assets/audio/guizhou.web.mp3"></audio>
+      <audio preload="none" src="wenyiduo-site/assets/audio/guizhou.web.mp3"></audio>
       <div class="pl">
         <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
         <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -761,7 +765,7 @@ main{position:relative;z-index:1}
       <div class="label">E3 尾声咏叹调</div>
       <div class="song">薪火</div>
       <div class="credit">词：白耀洲 孙子岚 ｜ 曲：彭侠颖 白耀洲</div>
-      <audio preload="metadata" src="wenyiduo-site/assets/audio/xinhuo.web.mp3"></audio>
+      <audio preload="none" src="wenyiduo-site/assets/audio/xinhuo.web.mp3"></audio>
       <div class="pl">
         <button class="pl-btn" type="button" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
         <div class="pl-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -977,24 +981,46 @@ main{position:relative;z-index:1}
   var sIO = new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+en.target.id)})}})},{rootMargin:"-35% 0px -55% 0px"});
   secs.forEach(function(s){if(s)sIO.observe(s)});
 
-  // ── 自建播放器：缓冲可视化 + 单音源互斥 + 拖拽 ──
-  var playing = null;
+  // ── 自建播放器：独立 Audio 实例 + 视口预取 + 缓冲可视化 ──
   var ICON_PLAY = '<svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg>';
   var ICON_PAUSE = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+  var current = null;   // 当前正在播放的 Audio 实例
 
   function fmt(sec){
     if (!isFinite(sec) || sec < 0) sec = 0;
     var m = Math.floor(sec / 60);
-    var s = Math.floor(sec % 60);
-    return m + ":" + (s < 10 ? "0" : "") + s;
+    var r = Math.floor(sec % 60);
+    return m + ":" + (r < 10 ? "0" : "") + r;
   }
 
   var heads = document.querySelectorAll(".audio-head");
+  var io = (window.IntersectionObserver) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){
+        var p = en.target._player;
+        if (p && p.preload !== "auto" && p.readyState === 0){
+          p.preload = "auto";
+          try { p.load(); } catch(e){}
+        }
+        io.unobserve(en.target);
+      }
+    });
+  }, {rootMargin:"420px 0px"}) : null;
 
   Array.prototype.forEach.call(heads, function(head){
-    var a   = head.querySelector("audio");
+    var el  = head.querySelector("audio");
     var ui  = head.querySelector(".pl");
-    if (!a || !ui) return;
+    if (!el || !ui) return;
+
+    var src = el.getAttribute("src");
+    if (!src) return;
+
+    /* 用独立 Audio 对象播放：不依赖 DOM 元素的尺寸 / 可见性 / 布局，
+       移动端浏览器对「隐藏媒体元素」的播放限制也就绕过去了。 */
+    var player = new Audio();
+    player.preload = "none";
+    player.src = src;
+    head._player = player;
 
     var btn   = ui.querySelector(".pl-btn");
     var trk   = ui.querySelector(".pl-track");
@@ -1005,87 +1031,117 @@ main{position:relative;z-index:1}
     var durT  = ui.querySelector(".pl-dur");
     var timeBox = ui.querySelector(".pl-time");
 
-    var dragging = false, wasPlaying = false;
+    var dragging = false, wasPlaying = false, pendingPlay = false;
 
     function render(){
-      var d = a.duration;
+      var d = player.duration;
       if (isFinite(d) && d > 0){
-        var p = a.currentTime / d;
+        var p = player.currentTime / d;
         var pct = (p * 100).toFixed(2) + "%";
         fill.style.width = pct;
         knob.style.left = pct;
-        curT.textContent = fmt(a.currentTime);
+        curT.textContent = fmt(player.currentTime);
         durT.textContent = fmt(d);
         timeBox.classList.add("on");
         trk.setAttribute("aria-valuenow", Math.round(p * 100));
-        trk.setAttribute("aria-valuetext", fmt(a.currentTime) + " / " + fmt(d));
+        trk.setAttribute("aria-valuetext", fmt(player.currentTime) + " / " + fmt(d));
       }
     }
 
     function renderBuf(){
-      if (!a.buffered || !a.buffered.length || !isFinite(a.duration) || a.duration <= 0) return;
-      var end = a.buffered.end(a.buffered.length - 1);
-      for (var i = 0; i < a.buffered.length; i++){
-        if (a.buffered.start(i) <= (a.currentTime || 0) && a.buffered.end(i) >= (a.currentTime || 0)){
-          end = a.buffered.end(i); break;
+      var b = player.buffered;
+      var d = player.duration;
+      if (!b || !b.length || !isFinite(d) || d <= 0) return;
+      var end = b.end(b.length - 1);
+      for (var k = 0; k < b.length; k++){
+        if (b.start(k) <= (player.currentTime || 0) && b.end(k) >= (player.currentTime || 0)){
+          end = b.end(k); break;
         }
       }
-      buf.style.width = ((end / a.duration) * 100).toFixed(2) + "%";
+      buf.style.width = ((end / d) * 100).toFixed(2) + "%";
     }
 
     function syncBtn(){
-      var isPlaying = !a.paused && !a.ended;
+      var isPlaying = !player.paused && !player.ended;
       btn.innerHTML = isPlaying ? ICON_PAUSE : ICON_PLAY;
       btn.setAttribute("aria-label", isPlaying ? "暂停" : "播放");
     }
 
+    function attempt(){
+      /* 直接 play()：浏览器会自行开始下载并在可播时出声，
+         不要再先 load()，那会重置状态、并丢掉用户手势。 */
+      var pr = player.play();
+      if (pr && pr.catch) pr.catch(function(err){
+        var name = err && err.name;
+        if (name === "NotAllowedError"){
+          pendingPlay = true;          // 需要再要点一下
+        } else if (name === "AbortError"){
+          // 被新的播放请求打断，忽略
+        } else {
+          pendingPlay = true;
+          btn.classList.remove("loading");
+          durT.textContent = "加载中…";
+        }
+      });
+    }
+
     function toggle(){
-      if (playing && playing !== a) { try { playing.pause(); } catch(e){} }
-      if (a.paused){
-        if (a.readyState === 0) { try { a.load(); } catch(e){} }
-        var pr = a.play();
-        if (pr && pr.catch) pr.catch(function(){ btn.classList.remove("loading"); });
+      if (current && current !== player) { try { current.pause(); } catch(e){} }
+      if (player.paused || player.ended){
+        btn.classList.add("loading");
+        attempt();
       } else {
-        a.pause();
+        player.pause();
       }
     }
 
-    // 桌面 click + 移动端 click（touch 也会产生 click），统一走这里
-    btn.addEventListener("click", function(e){
-      e.preventDefault();
-      if (Date.now() - (btn._lastTap || 0) < 400) return;
+    function safeToggle(e){
+      if (e && e.preventDefault) e.preventDefault();
       toggle();
-    });
-    btn.addEventListener("touchend", function(e){
-      // 部分安卓 webview 里 touchend 不补发 click，这里兜底但避免重复触发
-      if (Date.now() - (btn._lastTap || 0) < 400) return;
-      btn._lastTap = Date.now();
-      e.preventDefault();
-      toggle();
-    }, {passive: false});
+    }
 
-    a.addEventListener("loadedmetadata", function(){ render(); renderBuf(); });
-    a.addEventListener("durationchange", render);
-    a.addEventListener("timeupdate", function(){ render(); renderBuf(); });
-    a.addEventListener("progress", renderBuf);
-    a.addEventListener("seeking", render);
-    a.addEventListener("play", function(){ playing = a; syncBtn(); renderBuf(); });
-    a.addEventListener("playing", function(){ btn.classList.remove("loading"); syncBtn(); renderBuf(); });
-    a.addEventListener("pause", function(){ syncBtn(); });
-    a.addEventListener("ended", function(){ playing = null; syncBtn(); render(); });
-    a.addEventListener("waiting", function(){ btn.classList.add("loading"); });
-    a.addEventListener("canplay", function(){ btn.classList.remove("loading"); });
-    a.addEventListener("error", function(){ btn.classList.remove("loading"); durT.textContent = "加载失败"; });
+    btn.addEventListener("click", safeToggle);
+    btn.addEventListener("touchend", function(e){
+      if (Date.now() - (btn._t || 0) < 400) return;
+      btn._t = Date.now();
+      safeToggle(e);
+    }, {passive:false});
+
+    player.addEventListener("loadedmetadata", function(){ render(); renderBuf(); });
+    player.addEventListener("durationchange", render);
+    player.addEventListener("timeupdate", function(){ render(); renderBuf(); });
+    player.addEventListener("progress", renderBuf);
+    player.addEventListener("seeking", render);
+    player.addEventListener("seeking", renderBuf);
+    player.addEventListener("play", function(){
+      current = player; syncBtn(); btn.classList.add("loading"); renderBuf();
+    });
+    player.addEventListener("playing", function(){
+      btn.classList.remove("loading"); syncBtn(); renderBuf(); render();
+    });
+    player.addEventListener("pause", syncBtn);
+    player.addEventListener("ended", function(){ current = null; syncBtn(); render(); });
+    player.addEventListener("waiting", function(){ btn.classList.add("loading"); });
+    player.addEventListener("canplay", function(){
+      btn.classList.remove("loading");
+      if (pendingPlay){
+        pendingPlay = false;
+        attempt();
+      }
+    });
+    player.addEventListener("error", function(){
+      btn.classList.remove("loading");
+      durT.textContent = "加载失败";
+    });
 
     function seekTo(clientX){
       var r = trk.getBoundingClientRect();
       var p = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
-      if (isFinite(a.duration) && a.duration > 0){
-        a.currentTime = p * a.duration;
+      if (isFinite(player.duration) && player.duration > 0){
+        player.currentTime = p * player.duration;
         render();
       }
     }
-
     function seekFromEvent(e){
       var x = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
       seekTo(x);
@@ -1094,8 +1150,7 @@ main{position:relative;z-index:1}
     if (window.PointerEvent){
       trk.addEventListener("pointerdown", function(e){
         dragging = true;
-        wasPlaying = !a.paused;
-        if (wasPlaying) a.pause();
+        wasPlaying = !player.paused;
         try { trk.setPointerCapture(e.pointerId); } catch(err){}
         seekTo(e.clientX);
       });
@@ -1104,13 +1159,12 @@ main{position:relative;z-index:1}
         if (!dragging) return;
         dragging = false;
         try { trk.releasePointerCapture(e.pointerId); } catch(err){}
-        if (wasPlaying) a.play().catch(function(){});
       });
       trk.addEventListener("pointercancel", function(){ dragging = false; });
     } else {
-      trk.addEventListener("touchstart", function(e){ dragging = true; wasPlaying = !a.paused; if (wasPlaying) a.pause(); seekFromEvent(e); }, {passive:true});
+      trk.addEventListener("touchstart", function(e){ dragging = true; seekFromEvent(e); }, {passive:true});
       trk.addEventListener("touchmove", function(e){ if (dragging) seekFromEvent(e); }, {passive:true});
-      trk.addEventListener("touchend", function(){ if (!dragging) return; dragging = false; if (wasPlaying) a.play().catch(function(){}); });
+      trk.addEventListener("touchend", function(){ dragging = false; });
       trk.addEventListener("mousedown", function(e){ dragging = true; seekFromEvent(e); });
       trk.addEventListener("mousemove", function(e){ if (dragging) seekFromEvent(e); });
       trk.addEventListener("mouseup", function(){ dragging = false; });
@@ -1118,13 +1172,12 @@ main{position:relative;z-index:1}
 
     trk.addEventListener("keydown", function(e){
       var step = 5;
-      if (e.key === "ArrowRight"){ a.currentTime = Math.min(a.duration || 0, a.currentTime + step); e.preventDefault(); }
-      else if (e.key === "ArrowLeft"){ a.currentTime = Math.max(0, a.currentTime - step); e.preventDefault(); }
+      if (e.key === "ArrowRight"){ player.currentTime = Math.min(player.duration || 0, player.currentTime + step); e.preventDefault(); }
+      else if (e.key === "ArrowLeft"){ player.currentTime = Math.max(0, player.currentTime - step); e.preventDefault(); }
       else if (e.key === " " || e.key === "Enter"){ toggle(); e.preventDefault(); }
     });
 
-    // 首次渲染（已缓存或已预载的情况）
-    render(); renderBuf();
+    if (io) io.observe(head);
   });
 })();
 </script>
